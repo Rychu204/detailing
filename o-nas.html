@@ -5,39 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AutoDetailing — O nas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#f1f5f9}
-    header {position:fixed;top:0;left:0;right:0;background:#0f172a;padding:18px 24px;
-            box-shadow:0 6px 18px rgba(2,6,23,0.6);z-index:50}
+    body {margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#f1f5f9;line-height:1.6;
+          display:flex;flex-direction:column;min-height:100vh}
+    header {position:fixed;top:0;left:0;right:0;background:rgba(15, 23, 42, 0.95);padding:18px 24px;
+            box-shadow:0 6px 18px rgba(2,6,23,0.6);z-index:50;backdrop-filter:blur(10px)}
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
-    nav a:hover {color:#38bdf8}
+    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px;transition:all 0.3s ease}
+    nav a:hover {color:#38bdf8;transform:translateY(-2px)}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
-    main {min-height:100vh;display:flex;align-items:center;justify-content:center;
+    
+    main {flex:1;display:flex;align-items:center;justify-content:center;
           flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
     .page-title {font-size:48px;font-weight:700;margin-bottom:40px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .about-content {max-width:800px;text-align:left;color:#94a3b8;line-height:1.6;font-size:18px}
-    .about-section {margin-bottom:30px;padding:20px;background:#1e293b;border-radius:8px;border-left:4px solid #38bdf8}
-    .about-section h2 {color:#f1f5f9;margin-top:0;font-size:24px}
+    .about-section {margin-bottom:30px;padding:25px;background:#1e293b;border-radius:15px;border-left:4px solid #38bdf8;
+                    transition:transform 0.3s ease;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+    .about-section:hover {transform:translateY(-5px);box-shadow:0 15px 30px rgba(56,189,248,0.15)}
+    .about-section h2 {color:#f1f5f9;margin-top:0;font-size:24px;display:flex;align-items:center;gap:10px}
     .values-list {list-style:none;padding:0}
-    .values-list li {margin-bottom:10px;padding-left:20px;position:relative}
-    .values-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold}
-    .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
-                 padding:15px 30px;border-radius:5px;font-weight:600;cursor:pointer;
-                 font-size:18px;margin-top:30px;text-decoration:none;display:inline-block}
-    .cta-button:hover {background:linear-gradient(45deg, #60a5fa, #38bdf8);transform:translateY(-2px)}
+    .values-list li {margin-bottom:12px;padding-left:25px;position:relative}
+    .values-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold;font-size:18px}
+    
+    /* NOWA ELEGANCKA STOPKA */
+    .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
+                     margin-top:auto;border-top:3px solid #38bdf8;position:relative}
+    .contact-footer:before {content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+                           width:100px;height:3px;background:linear-gradient(90deg, transparent, #38bdf8, transparent)}
+    .contact-container {max-width:1000px;margin:0 auto;text-align:center}
+    .contact-title {font-size:2.2rem;margin-bottom:2rem;color:#f1f5f9;font-weight:700;
+                    background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .contact-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2.5rem;margin-bottom:2rem}
+    .contact-card {background:rgba(255,255,255,0.05);padding:2rem;border-radius:15px;backdrop-filter:blur(10px);
+                   border:1px solid rgba(56,189,248,0.2);transition:all 0.3s ease}
+    .contact-card:hover {transform:translateY(-5px);border-color:#38bdf8;box-shadow:0 10px 30px rgba(56,189,248,0.2)}
+    .contact-card h3 {color:#38bdf8;margin-bottom:1.5rem;font-size:1.3rem;display:flex;align-items:center;
+                      justify-content:center;gap:10px}
+    .contact-icon {font-size:1.8rem;color:#38bdf8}
+    .contact-info {color:#94a3b8;font-size:1.1rem;line-height:1.8}
+    .contact-info strong {color:#f1f5f9}
+    
+    .social-section {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+    .social-title {color:#94a3b8;margin-bottom:1.5rem;font-size:1.1rem}
+    .social-links {display:flex;justify-content:center;gap:1.5rem}
+    .social-link {width:50px;height:50px;background:rgba(56,189,248,0.1);border-radius:50%;display:flex;
+                  align-items:center;justify-content:center;color:#38bdf8;font-size:1.3rem;text-decoration:none;
+                  transition:all 0.3s ease;border:1px solid rgba(56,189,248,0.3)}
+    .social-link:hover {background:#38bdf8;color:#0f172a;transform:translateY(-3px);box-shadow:0 5px 15px rgba(56,189,248,0.4)}
+    
+    .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:18px">AutoDetailing</div>
+      <div style="font-weight:700;font-size:1.5rem">AutoDetailing</div>
       <div>
         <a href="index.html">Strona główna</a>
         <a href="o-nas.html" class="active">O nas</a>
         <a href="cennik.html">Cennik</a>
-        <a href="umow-wizyte.html">Umów wizytę</a>  <!-- DODANA ZAKŁADKA -->
+        <a href="umow-wizyte.html">Umów wizytę</a>
       </div>
     </nav>
   </header>
@@ -47,17 +77,17 @@
     
     <div class="about-content">
       <div class="about-section">
-        <h2>Kim jesteśmy?</h2>
+        <h2><i class="fas fa-users"></i> Kim jesteśmy?</h2>
         <p>Jesteśmy pasjonatami detailing samochodowego z ponad 10-letnim doświadczeniem. Nasza firma powstała z miłości do perfekcyjnie czystych i zadbanych pojazdów. Specjalizujemy się w kompleksowej pielęgnacji aut każdej marki i klasy.</p>
       </div>
       
       <div class="about-section">
-        <h2>Nasza misja</h2>
+        <h2><i class="fas fa-bullseye"></i> Nasza misja</h2>
         <p>Przywracamy blask i chronimy wartość Twojego samochodu. Dzięki nowoczesnym technologiom i sprawdzonym produktom, zapewniamy najwyższą jakość usług detailingowych.</p>
       </div>
       
       <div class="about-section">
-        <h2>Dlaczego my?</h2>
+        <h2><i class="fas fa-star"></i> Dlaczego my?</h2>
         <ul class="values-list">
           <li>Doświadczony zespół z pasją do detali</li>
           <li>Używamy tylko profesjonalnych, bezpiecznych produktów</li>
@@ -68,49 +98,67 @@
       </div>
       
       <div class="about-section">
-        <h2>Nasze wartości</h2>
+        <h2><i class="fas fa-heart"></i> Nasze wartości</h2>
         <p>W AutoDetailing stawiamy na jakość, precyzję i uczciwość. Każde auto traktujemy jak własne, dbając o każdy najmniejszy detal. Naszym celem jest nie tylko czysty samochód, ale także zadowolony klient.</p>
       </div>
     </div>
   </main>
-</body>
-  <!-- STOPKA KONTAKTOWA -->
+
+  <!-- ELEGANCKA STOPKA KONTAKTOWA -->
   <footer class="contact-footer">
     <div class="contact-container">
-      <div class="contact-info">
-        <h3><i class="fas fa-map-marker-alt"></i> Kontakt</h3>
-        <div class="contact-item">
-          <span class="contact-icon"><i class="fas fa-phone"></i></span>
-          <span>+48 123 456 789</span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-          <span>kontakt@autodetailing.pl</span>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-          <span>ul. Kartuska 4<br> Gdańsk</span>
+      <h2 class="contact-title">Skontaktuj się z nami</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3><i class="fas fa-map-marker-alt contact-icon"></i> Adres</h3>
+          <div class="contact-info">
+            <strong>AutoDetailing</strong><br>
+            ul. Przykładowa 123<br>
+            00-001 Warszawa<br>
+            <em>Parking strzeżony</em>
+          </div>
         </div>
         
+        <div class="contact-card">
+          <h3><i class="fas fa-clock contact-icon"></i> Godziny otwarcia</h3>
+          <div class="contact-info">
+            <strong>Poniedziałek - Piątek</strong><br>
+            8:00 - 18:00<br><br>
+            <strong>Sobota</strong><br>
+            9:00 - 14:00<br><br>
+            <strong>Niedziela</strong><br>
+            Zamknięte
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <h3><i class="fas fa-phone contact-icon"></i> Kontakt</h3>
+          <div class="contact-info">
+            <strong>Telefon</strong><br>
+            +48 123 456 789<br><br>
+            <strong>Email</strong><br>
+            kontakt@autodetailing.pl<br><br>
+            <strong>WhatsApp</strong><br>
+            +48 987 654 321
+          </div>
+        </div>
       </div>
       
-      <div class="hours-info">
-        <h3><i class="fas fa-clock"></i> Godziny otwarcia</h3>
-        <table class="hours-table">
-          <tr>
-            <td>Poniedziałek - Piątek</td>
-            <td>8:00 - 18:00</td>
-          </tr>
-          <tr>
-            <td>Sobota</td>
-            <td>9:00 - 14:00</td>
-          </tr>
-          <tr>
-            <td>Niedziela</td>
-            <td>9:00 - 14:00</td>
-          </tr>
-        </table>
+      <div class="social-section">
+        <div class="social-title">Obserwuj nas w mediach społecznościowych</div>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-google"></i></a>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        © 2024 AutoDetailing. Wszelkie prawa zastrzeżone. | Projekt i realizacja: AutoDetailing Team
       </div>
     </div>
   </footer>
+</body>
 </html>
