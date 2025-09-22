@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AutoDetailing — Strona główna</title>
+  <title>AutoDetailing — O nas</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#f1f5f9}
@@ -15,9 +15,14 @@
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     main {min-height:100vh;display:flex;align-items:center;justify-content:center;
           flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
-    .page-title {font-size:48px;font-weight:700;margin-bottom:20px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+    .page-title {font-size:48px;font-weight:700;margin-bottom:40px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .subtitle {font-size:20px;color:#94a3b8;margin-bottom:40px}
+    .about-content {max-width:800px;text-align:left;color:#94a3b8;line-height:1.6;font-size:18px}
+    .about-section {margin-bottom:30px;padding:20px;background:#1e293b;border-radius:8px;border-left:4px solid #38bdf8}
+    .about-section h2 {color:#f1f5f9;margin-top:0;font-size:24px}
+    .values-list {list-style:none;padding:0}
+    .values-list li {margin-bottom:10px;padding-left:20px;position:relative}
+    .values-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold}
   </style>
 </head>
 <body>
@@ -25,24 +30,43 @@
     <nav>
       <div style="font-weight:700;font-size:18px">AutoDetailing</div>
       <div>
-        <a href="index.html" class="active">Strona główna</a>
-        <a href="#o-nas">O nas</a>
+        <a href="index.html">Strona główna</a>
+        <a href="o-nas.html" class="active">O nas</a>
         <a href="cennik.html">Cennik</a>
       </div>
     </nav>
   </header>
 
-  <main id="home">
+  <main>
     <h1 class="page-title">O NAS</h1>
-    <p class="subtitle">Profesjonalny detailing samochodowy</p>
-
-    <section id="o-nas" style="margin-top:48px;max-width:800px">
-      <h2 style="font-size:20px;margin:0 0 8px;color:#fff">O nas</h2>
-      <p style="color:#94a3b8;margin:0 0 18px">
-        Mam na imie Rysiek i zajmuje się detailingiem od 1 dnia. Jestem osobą z pasją bez doświadczenia. Używam bezpiecznych produktów 
-        i nowoczesnych technik pielęgnacji lakieru oraz profesjonalnego sprzętu.
-      </p>
-    </section>
+    
+    <div class="about-content">
+      <div class="about-section">
+        <h2>Kim jesteśmy?</h2>
+        <p>Jesteśmy pasjonatami detailing samochodowego z ponad 10-letnim doświadczeniem. Nasza firma powstała z miłości do perfekcyjnie czystych i zadbanych pojazdów. Specjalizujemy się w kompleksowej pielęgnacji aut każdej marki i klasy.</p>
+      </div>
+      
+      <div class="about-section">
+        <h2>Nasza misja</h2>
+        <p>Przywracamy blask i chronimy wartość Twojego samochodu. Dzięki nowoczesnym technologiom i sprawdzonym produktom, zapewniamy najwyższą jakość usług detailingowych.</p>
+      </div>
+      
+      <div class="about-section">
+        <h2>Dlaczego my?</h2>
+        <ul class="values-list">
+          <li>Doświadczony zespół z pasją do detali</li>
+          <li>Używamy tylko profesjonalnych, bezpiecznych produktów</li>
+          <li>Nowoczesne techniki pielęgnacji lakieru</li>
+          <li>Indywidualne podejście do każdego klienta</li>
+          <li>Gwarancja satysfakcji z wykonanych usług</li>
+        </ul>
+      </div>
+      
+      <div class="about-section">
+        <h2>Nasze wartości</h2>
+        <p>W AutoDetailing stawiamy na jakość, precyzję i uczciwość. Każde auto traktujemy jak własne, dbając o każdy najmniejszy detal. Naszym celem jest nie tylko czysty samochód, ale także zadowolony klient.</p>
+      </div>
+    </div>
   </main>
 </body>
 </html>
