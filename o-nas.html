@@ -12,8 +12,7 @@
     header {position:fixed;top:0;left:0;right:0;background:rgba(15, 23, 42, 0.95);padding:18px 24px;
             box-shadow:0 6px 18px rgba(2,6,23,0.6);z-index:50;backdrop-filter:blur(10px)}
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px;transition:all 0.3s ease}
-    nav a:hover {color:#38bdf8;transform:translateY(-2px)}
+    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     
     main {flex:1;display:flex;align-items:center;justify-content:center;
@@ -22,14 +21,13 @@
                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .about-content {max-width:800px;text-align:left;color:#94a3b8;line-height:1.6;font-size:18px}
     .about-section {margin-bottom:30px;padding:25px;background:#1e293b;border-radius:15px;border-left:4px solid #38bdf8;
-                    transition:transform 0.3s ease;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
-    .about-section:hover {transform:translateY(-5px);box-shadow:0 15px 30px rgba(56,189,248,0.15)}
+                    box-shadow:0 5px 15px rgba(0,0,0,0.1)}
     .about-section h2 {color:#f1f5f9;margin-top:0;font-size:24px;display:flex;align-items:center;gap:10px}
     .values-list {list-style:none;padding:0}
     .values-list li {margin-bottom:12px;padding-left:25px;position:relative}
     .values-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold;font-size:18px}
     
-    /* NOWA ELEGANCKA STOPKA */
+    /* ELEGANCKA STOPKA BEZ HOVER */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
                      margin-top:auto;border-top:3px solid #38bdf8;position:relative}
     .contact-footer:before {content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
@@ -40,8 +38,7 @@
                     -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .contact-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2.5rem;margin-bottom:2rem}
     .contact-card {background:rgba(255,255,255,0.05);padding:2rem;border-radius:15px;backdrop-filter:blur(10px);
-                   border:1px solid rgba(56,189,248,0.2);transition:all 0.3s ease}
-    .contact-card:hover {transform:translateY(-5px);border-color:#38bdf8;box-shadow:0 10px 30px rgba(56,189,248,0.2)}
+                   border:1px solid rgba(56,189,248,0.2)}
     .contact-card h3 {color:#38bdf8;margin-bottom:1.5rem;font-size:1.3rem;display:flex;align-items:center;
                       justify-content:center;gap:10px}
     .contact-icon {font-size:1.8rem;color:#38bdf8}
@@ -53,8 +50,7 @@
     .social-links {display:flex;justify-content:center;gap:1.5rem}
     .social-link {width:50px;height:50px;background:rgba(56,189,248,0.1);border-radius:50%;display:flex;
                   align-items:center;justify-content:center;color:#38bdf8;font-size:1.3rem;text-decoration:none;
-                  transition:all 0.3s ease;border:1px solid rgba(56,189,248,0.3)}
-    .social-link:hover {background:#38bdf8;color:#0f172a;transform:translateY(-3px);box-shadow:0 5px 15px rgba(56,189,248,0.4)}
+                  border:1px solid rgba(56,189,248,0.3)}
     
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
   </style>
@@ -73,24 +69,24 @@
   </header>
 
   <main>
-    <h1 class="page-title">O NAS</h1>
+    <h1 class="page-title">O MNIE</h1>
     
     <div class="about-content">
       <div class="about-section">
-        <h2><i class="fas fa-users"></i> Kim jesteśmy?</h2>
-        <p>Jesteśmy pasjonatami detailing samochodowego z ponad 10-letnim doświadczeniem. Nasza firma powstała z miłości do perfekcyjnie czystych i zadbanych pojazdów. Specjalizujemy się w kompleksowej pielęgnacji aut każdej marki i klasy.</p>
+        <h2><i class="fas fa-user"></i> Kim jestem?</h2>
+        <p>Jestem pasjonatem detailing samochodowego z ponad 10-letnim doświadczeniem. Moja firma powstała z miłości do perfekcyjnie czystych i zadbanych pojazdów. Specjalizuję się w kompleksowej pielęgnacji aut każdej marki i klasy.</p>
       </div>
       
       <div class="about-section">
-        <h2><i class="fas fa-bullseye"></i> Nasza misja</h2>
-        <p>Przywracamy blask i chronimy wartość Twojego samochodu. Dzięki nowoczesnym technologiom i sprawdzonym produktom, zapewniamy najwyższą jakość usług detailingowych.</p>
+        <h2><i class="fas fa-bullseye"></i> Moja misja</h2>
+        <p>Przywracam blask i chronię wartość Twojego samochodu. Dzięki nowoczesnym technologiom i sprawdzonym produktom, zapewniam najwyższą jakość usług detailingowych.</p>
       </div>
       
       <div class="about-section">
-        <h2><i class="fas fa-star"></i> Dlaczego my?</h2>
+        <h2><i class="fas fa-star"></i> Dlaczego ja?</h2>
         <ul class="values-list">
-          <li>Doświadczony zespół z pasją do detali</li>
-          <li>Używamy tylko profesjonalnych, bezpiecznych produktów</li>
+          <li>Doświadczony specjalista z pasją do detali</li>
+          <li>Używam tylko profesjonalnych, bezpiecznych produktów</li>
           <li>Nowoczesne techniki pielęgnacji lakieru</li>
           <li>Indywidualne podejście do każdego klienta</li>
           <li>Gwarancja satysfakcji z wykonanych usług</li>
@@ -98,25 +94,23 @@
       </div>
       
       <div class="about-section">
-        <h2><i class="fas fa-heart"></i> Nasze wartości</h2>
-        <p>W AutoDetailing stawiamy na jakość, precyzję i uczciwość. Każde auto traktujemy jak własne, dbając o każdy najmniejszy detal. Naszym celem jest nie tylko czysty samochód, ale także zadowolony klient.</p>
+        <h2><i class="fas fa-heart"></i> Moje wartości</h2>
+        <p>W AutoDetailing stawiam na jakość, precyzję i uczciwość. Każde auto traktuję jak własne, dbając o każdy najmniejszy detal. Moim celem jest nie tylko czysty samochód, ale także zadowolony klient.</p>
       </div>
     </div>
   </main>
 
-  <!-- ELEGANCKA STOPKA KONTAKTOWA -->
+  <!-- ELEGANCKA STOPKA KONTAKTOWA BEZ HOVER -->
   <footer class="contact-footer">
     <div class="contact-container">
-      <h2 class="contact-title">Skontaktuj się z nami</h2>
+      <h2 class="contact-title">Skontaktuj się ze mną</h2>
       
       <div class="contact-grid">
         <div class="contact-card">
-          <h3><i class="fas fa-map-marker-alt contact-icon"></i> Adres</h3>
+          <h3><i class="fas fa-map-marker-alt contact-icon"></i> Gdańsk</h3>
           <div class="contact-info">
             <strong>AutoDetailing</strong><br>
-            ul. Przykładowa 123<br>
-            00-001 Warszawa<br>
-            <em>Parking strzeżony</em>
+         
           </div>
         </div>
         
@@ -125,18 +119,14 @@
           <div class="contact-info">
             <strong>Poniedziałek - Piątek</strong><br>
             8:00 - 18:00<br><br>
-            <strong>Sobota</strong><br>
+            <strong>Sobota - Niedziela</strong><br>
             9:00 - 14:00<br><br>
-            <strong>Niedziela</strong><br>
-            Zamknięte
           </div>
         </div>
         
         <div class="contact-card">
           <h3><i class="fas fa-phone contact-icon"></i> Kontakt</h3>
-          <div class="contact-info">
-            <strong>Telefon</strong><br>
-            +48 123 456 789<br><br>
+          <div class="contact-info">     
             <strong>Email</strong><br>
             kontakt@autodetailing.pl<br><br>
             <strong>WhatsApp</strong><br>
@@ -145,18 +135,8 @@
         </div>
       </div>
       
-      <div class="social-section">
-        <div class="social-title">Obserwuj nas w mediach społecznościowych</div>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-google"></i></a>
-        </div>
-      </div>
-      
       <div class="copyright">
-        © 2024 AutoDetailing. Wszelkie prawa zastrzeżone. | Projekt i realizacja: AutoDetailing Team
+        © 2025 AutoDetailing. Wszelkie prawa zastrzeżone. | Projekt i realizacja: AutoDetailing
       </div>
     </div>
   </footer>
