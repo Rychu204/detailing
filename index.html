@@ -3,100 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AutoDetailing — Profesjonalna pielęgnacja samochodów</title>
+  <title>AutoDetailing — Strona główna</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#f1f5f9;line-height:1.6}
-    header {position:fixed;top:0;left:0;right:0;background:rgba(15, 23, 42, 0.95);padding:18px 24px;
-            box-shadow:0 6px 18px rgba(2,6,23,0.6);z-index:50;backdrop-filter:blur(10px)}
+    body {margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#f1f5f9}
+    header {position:fixed;top:0;left:0;right:0;background:#0f172a;padding:18px 24px;
+            box-shadow:0 6px 18px rgba(2,6,23,0.6);z-index:50}
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px;transition:all 0.3s ease}
-    nav a:hover {color:#38bdf8;transform:translateY(-2px)}
+    nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
+    nav a:hover {color:#38bdf8}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
-    
-    .hero {min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;
-           padding:120px 24px 48px;text-align:center;background:linear-gradient(135deg, #0b1220 0%, #1e293b 100%)}
-    .hero-title {font-size:3.5rem;font-weight:700;margin-bottom:1rem;background:linear-gradient(45deg, #38bdf8, #60a5fa, #38bdf8);
-                 background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                 background-clip:text;animation:gradient 3s ease infinite}
-    @keyframes gradient {0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%}}
-    
-    .features {display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:2rem;padding:4rem 2rem;max-width:1100px;margin:0 auto}
-    .feature-card {background:#1e293b;padding:2rem;border-radius:10px;text-align:center;transition:transform 0.3s ease}
-    .feature-card:hover {transform:translateY(-5px);box-shadow:0 10px 30px rgba(56,189,248,0.2)}
-    .feature-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:1rem}
-    
+    main {min-height:100vh;display:flex;align-items:center;justify-content:center;
+          flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
+    .page-title {font-size:48px;font-weight:700;margin-bottom:20px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle {font-size:20px;color:#94a3b8;margin-bottom:40px}
     .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
-                 padding:15px 30px;border-radius:50px;font-weight:600;cursor:pointer;
-                 font-size:1.1rem;margin-top:2rem;text-decoration:none;display:inline-block;
-                 transition:all 0.3s ease;box-shadow:0 4px 15px rgba(56,189,248,0.3)}
-    .cta-button:hover {transform:translateY(-3px);box-shadow:0 8px 25px rgba(56,189,248,0.4)}
-    
-    footer {background:#0f172a;padding:3rem 2rem;text-align:center;margin-top:4rem}
-    .social-links {display:flex;justify-content:center;gap:1rem;margin:1rem 0}
-    .social-links a {color:#94a3b8;font-size:1.5rem;transition:color 0.3s ease}
-    .social-links a:hover {color:#38bdf8}
+                 padding:15px 30px;border-radius:5px;font-weight:600;cursor:pointer;
+                 font-size:18px;margin-top:30px;text-decoration:none;display:inline-block}
+    .cta-button:hover {background:linear-gradient(45deg, #60a5fa, #38bdf8);transform:translateY(-2px)}
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:1.5rem">AutoDetailing</div>
+      <div style="font-weight:700;font-size:18px">AutoDetailing</div>
       <div>
         <a href="index.html" class="active">Strona główna</a>
         <a href="o-nas.html">O nas</a>
         <a href="cennik.html">Cennik</a>
-        <a href="umow-wizyte.html">Umów wizytę</a>
+        <a href="umow-wizyte.html">Umów wizytę</a>  <!-- DODANA ZAKŁADKA -->
       </div>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1 class="hero-title">Profesjonalny Detailing Samochodowy</h1>
-    <p style="font-size:1.3rem;color:#94a3b8;max-width:600px;margin-bottom:2rem">
-      Przywracamy blask Twojemu autu. Doskonała jakość, precyzja wykonania i dbałość o każdy detal.
-    </p>
-    <a href="umow-wizyte.html" class="cta-button">
-      <i class="fas fa-calendar-check"></i> Umów wizytę online
-    </a>
-  </section>
-
-  <section class="features">
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fas fa-spray-can"></i></div>
-      <h3>Mycie Ręczne</h3>
-      <p>Delikatne i dokładne mycie ręczne, które chroni lakier i zapewnia idealną czystość.</p>
-    </div>
+  <main id="home">
+    <h1 class="page-title">STRONA GŁÓWNA</h1>
+    <p class="subtitle">Profesjonalny detailing samochodowy</p>
     
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fas fa-car"></i></div>
-      <h3>Pielęgnacja Wnętrza</h3>
-      <p>Kompleksowe czyszczenie wnętrza z użyciem profesjonalnych preparatów.</p>
-    </div>
-    
-    <div class="feature-card">
-      <div class="feature-icon"><i class="fas fa-gem"></i></div>
-      <h3>Powłoki Ceramiczne</h3>
-      <p>Zaawansowane zabezpieczenie lakieru zapewniające długotrwałą ochronę.</p>
-    </div>
-  </section>
-
-  <footer>
-    <div style="max-width:1100px;margin:0 auto">
-      <h3>AutoDetailing</h3>
-      <p style="color:#94a3b8">Profesjonalna pielęgnacja samochodów</p>
-      
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-      </div>
-      
-      <p style="color:#64748b;margin-top:2rem">
-        © 2024 AutoDetailing. Wszelkie prawa zastrzeżone.
-      </p>
-    </div>
-  </footer>
+    <!-- DODANY PRZYCISK DO UMÓWIENIA WIZYTY -->
+    <a href="umow-wizyte.html" class="cta-button">Umów wizytę już teraz!</a>
+  </main>
 </body>
 </html>
