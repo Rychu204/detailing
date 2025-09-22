@@ -12,18 +12,20 @@
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a:hover {color:#38bdf8}
+    nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     main {min-height:100vh;display:flex;align-items:center;justify-content:center;
           flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
-    h1 {font-size:32px;margin-bottom:12px}
-    p {color:#94a3b8}
+    .page-title {font-size:48px;font-weight:700;margin-bottom:20px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle {font-size:20px;color:#94a3b8;margin-bottom:40px}
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:18px">Czysty Rychu</div>
+      <div style="font-weight:700;font-size:18px">AutoDetailing</div>
       <div>
-        <a href="index.html">Strona główna</a>
+        <a href="index.html" class="active">Strona główna</a>
         <a href="#o-nas">O nas</a>
         <a href="cennik.html">Cennik</a>
       </div>
@@ -31,8 +33,8 @@
   </header>
 
   <main id="home">
-    <h1>Profesjonalny detailing samochodowy</h1>
-    <p>Przywracamy połysk Twojemu autu</p>
+    <h1 class="page-title">STRONA GŁÓWNA</h1>
+    <p class="subtitle">Profesjonalny detailing samochodowy</p>
 
     <section id="o-nas" style="margin-top:48px;max-width:800px">
       <h2 style="font-size:20px;margin:0 0 8px;color:#fff">O nas</h2>
@@ -43,5 +45,4 @@
     </section>
   </main>
 </body>
-
 </html>
