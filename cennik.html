@@ -20,6 +20,10 @@
     .price-list {list-style:none;padding:0;color:#94a3b8;text-align:left;font-size:18px}
     .price-list li {margin-bottom:16px;padding:12px 0;border-bottom:1px solid #1e293b}
     .price-list li:last-child {border-bottom:none}
+    .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
+                 padding:15px 30px;border-radius:5px;font-weight:600;cursor:pointer;
+                 font-size:18px;margin-top:30px;text-decoration:none;display:inline-block}
+    .cta-button:hover {background:linear-gradient(45deg, #60a5fa, #38bdf8);transform:translateY(-2px)}
   </style>
 </head>
 <body>
@@ -28,8 +32,9 @@
       <div style="font-weight:700;font-size:18px">AutoDetailing</div>
       <div>
         <a href="index.html">Strona główna</a>
-        <a href="o-nas.html">O nas</a>  <!-- ZMIENIONE: z index.html#o-nas na o-nas.html -->
+        <a href="o-nas.html">O nas</a>
         <a href="cennik.html" class="active">Cennik</a>
+        <a href="umow-wizyte.html">Umów wizytę</a>  <!-- DODANY LINK -->
       </div>
     </nav>
   </header>
@@ -42,6 +47,9 @@
       <li>Pielęgnacja wnętrza — od 100 PLN</li>
       <li>Detailing w środku i na zewnątrz — od 200 PLN</li>
     </ul>
+
+    <!-- DODANY PRZYCISK DO UMÓWIENIA WIZYTY -->
+    <a href="umow-wizyte.html" class="cta-button">Umów wizytę już teraz!</a>
   </main>
 </body>
 </html>
