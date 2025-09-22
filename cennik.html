@@ -12,11 +12,14 @@
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a:hover {color:#38bdf8}
-    main {min-height:100vh;display:flex;align-items:flex-start;flex-direction:column;
-          padding:120px 24px 48px;box-sizing:border-box;max-width:800px;margin:0 auto}
-    h1 {font-size:28px;margin-bottom:24px}
-    ul {list-style:none;padding:0;color:#94a3b8}
-    li {margin-bottom:8px}
+    nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
+    main {min-height:100vh;display:flex;align-items:center;justify-content:center;
+          flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
+    .page-title {font-size:48px;font-weight:700;margin-bottom:40px;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .price-list {list-style:none;padding:0;color:#94a3b8;text-align:left;font-size:18px}
+    .price-list li {margin-bottom:16px;padding:12px 0;border-bottom:1px solid #1e293b}
+    .price-list li:last-child {border-bottom:none}
   </style>
 </head>
 <body>
@@ -26,14 +29,15 @@
       <div>
         <a href="index.html">Strona główna</a>
         <a href="index.html#o-nas">O nas</a>
-        <a href="cennik.html">Cennik</a>
+        <a href="cennik.html" class="active">Cennik</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <h1>Cennik usług</h1>
-    <ul>
+    <h1 class="page-title">CENNIK</h1>
+    
+    <ul class="price-list">
       <li>Mycie ręczne — od 120 PLN</li>
       <li>Renowacja lakieru — od 450 PLN</li>
       <li>Powłoka ceramiczna — od 900 PLN</li>
