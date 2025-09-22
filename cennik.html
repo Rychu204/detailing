@@ -20,22 +20,22 @@
     .page-title {font-size:3.5rem;font-weight:700;margin-bottom:2rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     
-    .pricing-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));gap:2rem;max-width:1100px;margin:2rem auto}
-    .pricing-card {background:#1e293b;padding:2.5rem;border-radius:15px;border-left:4px solid #38bdf8;
-                   box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:center}
-    .pricing-icon {font-size:3rem;color:#38bdf8;margin-bottom:1.5rem}
-    .pricing-card h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.8rem}
-    .price {font-size:2.5rem;font-weight:700;color:#38bdf8;margin:1rem 0}
-    .price-desc {color:#94a3b8;font-size:1.1rem;line-height:1.6;margin-bottom:1.5rem}
-    .features-list {list-style:none;padding:0;text-align:left;color:#94a3b8;margin-bottom:2rem}
-    .features-list li {margin-bottom:0.8rem;padding-left:1.5rem;position:relative}
+    .pricing-grid {display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem;max-width:1200px;margin:2rem auto}
+    .pricing-card {background:#1e293b;padding:1.5rem;border-radius:15px;border-left:4px solid #38bdf8;
+                   box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:center;min-height:400px;display:flex;flex-direction:column}
+    .pricing-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:1rem}
+    .pricing-card h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.5rem}
+    .price {font-size:2rem;font-weight:700;color:#38bdf8;margin:1rem 0}
+    .price-desc {color:#94a3b8;font-size:1rem;line-height:1.5;margin-bottom:1rem;flex-grow:1}
+    .features-list {list-style:none;padding:0;text-align:left;color:#94a3b8;margin-bottom:1.5rem}
+    .features-list li {margin-bottom:0.5rem;padding-left:1.2rem;position:relative;font-size:0.9rem}
     .features-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold}
     
-    .cta-section {margin-top:3rem;padding:3rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    .cta-section {margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
                   border-radius:15px;max-width:800px}
     .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
-                 padding:15px 30px;border-radius:50px;font-weight:600;cursor:pointer;
-                 font-size:1.1rem;text-decoration:none;display:inline-block;
+                 padding:12px 25px;border-radius:50px;font-weight:600;cursor:pointer;
+                 font-size:1rem;text-decoration:none;display:inline-block;
                  box-shadow:0 4px 15px rgba(56,189,248,0.3)}
     
     /* ELEGANCKA STOPKA BEZ HOVER */
@@ -64,6 +64,16 @@
                   border:1px solid rgba(56,189,248,0.3)}
     
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
+
+    /* Responsywność dla mniejszych ekranów */
+    @media (max-width: 1024px) {
+      .pricing-grid {grid-template-columns:repeat(2, 1fr);max-width:800px}
+    }
+    
+    @media (max-width: 768px) {
+      .pricing-grid {grid-template-columns:1fr;max-width:400px}
+      .page-title {font-size:2.5rem}
+    }
   </style>
 </head>
 <body>
@@ -124,8 +134,8 @@
     </div>
     
     <div class="cta-section">
-      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:2rem">Masz pytania dotyczące cen?</h2>
-      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1.1rem">Skontaktuj się ze mną, aby uzyskać dokładną wycenę dla Twojego samochodu</p>
+      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:1.8rem">Masz pytania dotyczące cen?</h2>
+      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1rem">Skontaktuj się ze mną, aby uzyskać dokładną wycenę dla Twojego samochodu</p>
       <a href="umow-wizyte.html" class="cta-button">Umów konsultację</a>
     </div>
   </main>
