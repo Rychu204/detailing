@@ -61,12 +61,206 @@
                   border:1px solid rgba(56,189,248,0.3)}
     
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
+
+    /* ===== RESPONSYWNOŚĆ MOBILNA ===== */
+    
+    /* Tablety i mniejsze laptopy */
+    @media (max-width: 1024px) {
+      .page-title { font-size: 3rem; }
+      .services-grid { max-width: 900px; }
+    }
+    
+    /* Tablety */
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; }
+      
+      nav { 
+        flex-direction: column; 
+        gap: 15px;
+        text-align: center;
+      }
+      
+      nav div { 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 12px;
+      }
+      
+      nav a { 
+        margin: 0; 
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      
+      main { 
+        padding: 110px 20px 40px; 
+      }
+      
+      .page-title { 
+        font-size: 2.5rem; 
+        margin-bottom: 1rem;
+      }
+      
+      .subtitle { 
+        font-size: 1.1rem; 
+        margin-bottom: 2rem;
+      }
+      
+      .services-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+        max-width: 500px;
+      }
+      
+      .service-card { 
+        padding: 1.5rem; 
+      }
+      
+      .cta-section {
+        padding: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .cta-section h2 {
+        font-size: 1.7rem;
+      }
+      
+      .contact-footer { 
+        padding: 3rem 1.5rem; 
+      }
+      
+      .contact-title {
+        font-size: 1.8rem;
+      }
+    }
+    
+    /* Telefony */
+    @media (max-width: 480px) {
+      header { padding: 12px 15px; }
+      
+      nav div { 
+        gap: 8px;
+      }
+      
+      nav a { 
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+      
+      .logo { 
+        font-size: 1.3rem; 
+      }
+      
+      main { 
+        padding: 100px 15px 30px; 
+      }
+      
+      .page-title { 
+        font-size: 2rem; 
+        line-height: 1.2;
+      }
+      
+      .subtitle { 
+        font-size: 1rem; 
+        margin-bottom: 1.5rem;
+      }
+      
+      .services-grid { 
+        gap: 1rem;
+      }
+      
+      .service-card { 
+        padding: 1.2rem; 
+      }
+      
+      .service-icon {
+        font-size: 2rem;
+      }
+      
+      .service-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .cta-section {
+        padding: 1.5rem;
+      }
+      
+      .cta-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .cta-section p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+      
+      .contact-footer { 
+        padding: 2rem 1rem; 
+      }
+      
+      .contact-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .contact-card {
+        padding: 1.5rem;
+      }
+      
+      .contact-info {
+        font-size: 1rem;
+      }
+      
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+      
+      .copyright {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Bardzo małe telefony */
+    @media (max-width: 360px) {
+      nav a { 
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+      
+      .page-title { 
+        font-size: 1.8rem; 
+      }
+      
+      main { 
+        padding: 90px 12px 25px; 
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
+      <div class="logo" style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
       <div>
         <a href="index.html" class="active">Strona główna</a>
         <a href="o-nas.html">O mnie</a>
@@ -83,20 +277,20 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-spray-can"></i></div>
-        <h3>Mycie Ręczne</h3>
+        <h3>Zewnętrzne mycie ręczne</h3>
         <p>Delikatne i dokładne mycie ręczne, które chroni lakier i zapewnia idealną czystość.</p>
       </div>
       
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-car"></i></div>
         <h3>Pielęgnacja Wnętrza</h3>
-        <p>Kompleksowe czyszczenie wnętrza z użyciem profesjonalnych preparatów.</p>
+        <p>Czyszczenie wnętrza z użyciem profesjonalnych preparatów.</p>
       </div>
       
       <div class="service-card">
         <div class="service-icon"><i class="fas fa-gem"></i></div>
         <h3>Detailing Kompleksowy</h3>
-        <p>Kompleksowe czyszczenie lakieru i zabezpieczenie oraz czyszczenie wnetrz.</p>
+        <p>Kompleksowe czyszczenie lakieru i zabezpieczenie oraz czyszczenie wnętrza.</p>
       </div>
     </div>
     
@@ -151,6 +345,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
