@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PerłaDetailing — Strona główna</title>
+  <title>PerłaDetailing — Galeria</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -15,25 +15,19 @@
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     
-    main {flex:1;display:flex;align-items:center;justify-content:center;
-          flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
+    main {flex:1;padding:120px 24px 48px;box-sizing:border-box;max-width:1200px;margin:0 auto;width:100%}
     .page-title {font-size:3.5rem;font-weight:700;margin-bottom:1.5rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
-                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .subtitle {font-size:1.3rem;color:#94a3b8;margin-bottom:3rem;max-width:600px;line-height:1.6}
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}
+    .subtitle {font-size:1.3rem;color:#94a3b8;margin-bottom:3rem;max-width:600px;line-height:1.6;text-align:center;margin-left:auto;margin-right:auto}
     
-    .services-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:2rem;max-width:1100px;margin:2rem auto}
-    .service-card {background:#1e293b;padding:2rem;border-radius:15px;border-left:4px solid #38bdf8;
+    /* Style dla galerii */
+    .gallery-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));gap:2rem;margin:2rem auto}
+    .gallery-item {background:#1e293b;padding:1.5rem;border-radius:15px;border-left:4px solid #38bdf8;
                    box-shadow:0 5px 15px rgba(0,0,0,0.1)}
-    .service-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:1rem}
-    .service-card h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.5rem}
-    .service-card p {color:#94a3b8;line-height:1.6}
-    
-    .cta-section {margin-top:3rem;padding:3rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-                  border-radius:15px;max-width:800px}
-    .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
-                 padding:15px 30px;border-radius:50px;font-weight:600;cursor:pointer;
-                 font-size:1.1rem;text-decoration:none;display:inline-block;
-                 box-shadow:0 4px 15px rgba(56,189,248,0.3)}
+    .gallery-item h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.3rem;text-align:center}
+    .comparison-container {display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .comparison-container img {width:100%;border-radius:8px;object-fit:cover;height:200px}
+    .before-label, .after-label {text-align:center;color:#94a3b8;font-size:0.9rem;margin-top:0.5rem}
     
     /* ELEGANCKA STOPKA BEZ HOVER */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
@@ -67,7 +61,7 @@
     /* Tablety i mniejsze laptopy */
     @media (max-width: 1024px) {
       .page-title { font-size: 3rem; }
-      .services-grid { max-width: 900px; }
+      .gallery-grid { max-width: 900px; }
     }
     
     /* Tablety */
@@ -107,23 +101,14 @@
         margin-bottom: 2rem;
       }
       
-      .services-grid { 
+      .gallery-grid { 
         grid-template-columns: 1fr; 
         gap: 1.5rem;
         max-width: 500px;
       }
       
-      .service-card { 
+      .gallery-item { 
         padding: 1.5rem; 
-      }
-      
-      .cta-section {
-        padding: 2rem;
-        margin-top: 2rem;
-      }
-      
-      .cta-section h2 {
-        font-size: 1.7rem;
       }
       
       .contact-footer { 
@@ -166,39 +151,21 @@
         margin-bottom: 1.5rem;
       }
       
-      .services-grid { 
+      .gallery-grid { 
         gap: 1rem;
       }
       
-      .service-card { 
+      .gallery-item { 
         padding: 1.2rem; 
       }
       
-      .service-icon {
-        font-size: 2rem;
+      .comparison-container {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
       }
       
-      .service-card h3 {
-        font-size: 1.3rem;
-      }
-      
-      .cta-section {
-        padding: 1.5rem;
-      }
-      
-      .cta-section h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-      
-      .cta-section p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-      }
-      
-      .cta-button {
-        padding: 12px 25px;
-        font-size: 1rem;
+      .comparison-container img {
+        height: 180px;
       }
       
       .contact-footer { 
@@ -254,6 +221,14 @@
       main { 
         padding: 90px 12px 25px; 
       }
+      
+      .gallery-item {
+        padding: 1rem;
+      }
+      
+      .comparison-container img {
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -262,42 +237,66 @@
     <nav>
       <div class="logo" style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
       <div>
-        <a href="index.html" class="active">Strona główna</a>
+        <a href="index.html">Strona główna</a>
         <a href="o-nas.html">O mnie</a>
         <a href="cennik.html">Cennik</a>
         <a href="umow-wizyte.html">Umów wizytę</a>
+        <a href="galeria.html" class="active">Galeria</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <h1 class="page-title">PROFESJONALNY DETAILING</h1>
-    <p class="subtitle">Przywracam blask Twojemu samochodowi z pasją i dbałością o każdy detal</p>
+    <h1 class="page-title">GALERIA PRZED I PO</h1>
+    <p class="subtitle">Zobacz efekty mojej pracy - przemiana samochodów, które przeszły detailing</p>
     
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-spray-can"></i></div>
-        <h3>Detailing Zewnętrzny</h3>
-        <p>Delikatne i dokładne mycie ręczne, które chroni lakier i zapewnia idealną czystość.</p>
+    <div class="gallery-grid">
+      <!-- PRZYKŁAD 1 - Zastąp ścieżki swoimi zdjęciami -->
+      <div class="gallery-item">
+        <h3>Renovacja lakieru</h3>
+        <div class="comparison-container">
+          <div>
+            <img src="images/przed-1.jpg" alt="Samochód przed renowacją lakieru">
+            <div class="before-label">Przed</div>
+          </div>
+          <div>
+            <img src="images/po-1.jpg" alt="Samochód po renowacji lakieru">
+            <div class="after-label">Po</div>
+          </div>
+        </div>
       </div>
-      
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-car"></i></div>
-        <h3>Pielęgnacja Wnętrza</h3>
-        <p>Kompleksowe czyszczenie wnętrza z użyciem profesjonalnych preparatów.</p>
+
+      <!-- PRZYKŁAD 2 - Zastąp ścieżki swoimi zdjęciami -->
+      <div class="gallery-item">
+        <h3>Czyszczenie wnętrza</h3>
+        <div class="comparison-container">
+          <div>
+            <img src="images/przed-2.jpg" alt="Wnętrze samochodu przed czyszczeniem">
+            <div class="before-label">Przed</div>
+          </div>
+          <div>
+            <img src="images/po-2.jpg" alt="Wnętrze samochodu po czyszczeniu">
+            <div class="after-label">Po</div>
+          </div>
+        </div>
       </div>
-      
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-gem"></i></div>
-        <h3>Detailing Kompleksowy</h3>
-        <p>Kompleksowe czyszczenie lakieru i zabezpieczenie oraz czyszczenie wnętrza.</p>
+
+      <!-- PRZYKŁAD 3 - Zastąp ścieżki swoimi zdjęciami -->
+      <div class="gallery-item">
+        <h3>Detailing kompleksowy</h3>
+        <div class="comparison-container">
+          <div>
+            <img src="images/przed-3.jpg" alt="Samochód przed detailingiem kompleksowym">
+            <div class="before-label">Przed</div>
+          </div>
+          <div>
+            <img src="images/po-3.jpg" alt="Samochód po detailing kompleksowym">
+            <div class="after-label">Po</div>
+          </div>
+        </div>
       </div>
-    </div>
-    
-    <div class="cta-section">
-      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:2rem">Gotowy na metamorfozę swojego auta?</h2>
-      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1.1rem">Umów wizytę już dziś i przekonaj się, jak może wyglądać Twój samochód</p>
-      <a href="umow-wizyte.html" class="cta-button">Umów wizytę online</a>
+
+      <!-- DODAJ WIĘCEJ ELEMENTÓW WEDŁUG POTRZEBY -->
     </div>
   </main>
 
