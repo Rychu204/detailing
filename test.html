@@ -15,19 +15,23 @@
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     
-    main {flex:1;padding:120px 24px 48px;box-sizing:border-box;max-width:1200px;margin:0 auto;width:100%}
+    main {flex:1;padding:120px 24px 48px;box-sizing:border-box;max-width:1400px;margin:0 auto;width:100%}
     .page-title {font-size:3.5rem;font-weight:700;margin-bottom:1.5rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
                  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}
     .subtitle {font-size:1.3rem;color:#94a3b8;margin-bottom:3rem;max-width:600px;line-height:1.6;text-align:center;margin-left:auto;margin-right:auto}
     
-    /* Style dla galerii */
-    .gallery-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));gap:2rem;margin:2rem auto}
-    .gallery-item {background:#1e293b;padding:1.5rem;border-radius:15px;border-left:4px solid #38bdf8;
-                   box-shadow:0 5px 15px rgba(0,0,0,0.1)}
-    .gallery-item h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.3rem;text-align:center}
-    .comparison-container {display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    .comparison-container img {width:100%;border-radius:8px;object-fit:cover;height:200px}
-    .before-label, .after-label {text-align:center;color:#94a3b8;font-size:0.9rem;margin-top:0.5rem}
+    /* Style dla prostej galerii przed/po */
+    .gallery-section {margin-bottom:4rem}
+    .section-title {font-size:2rem;color:#f1f5f9;margin-bottom:2rem;text-align:center;border-bottom:2px solid #38bdf8;padding-bottom:0.5rem;display:inline-block}
+    
+    .comparison-grid {display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem}
+    .comparison-header {grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:1rem}
+    .comparison-header h3 {text-align:center;color:#38bdf8;font-size:1.5rem;margin:0}
+    
+    .image-pair {display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;align-items:start}
+    .image-container {text-align:center}
+    .image-container img {width:100%;border-radius:10px;object-fit:cover;height:300px;box-shadow:0 5px 15px rgba(0,0,0,0.3)}
+    .image-label {margin-top:0.5rem;color:#94a3b8;font-size:1rem;font-weight:600}
     
     /* ELEGANCKA STOPKA BEZ HOVER */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
@@ -61,7 +65,7 @@
     /* Tablety i mniejsze laptopy */
     @media (max-width: 1024px) {
       .page-title { font-size: 3rem; }
-      .gallery-grid { max-width: 900px; }
+      .comparison-grid, .image-pair { gap: 1.5rem; }
     }
     
     /* Tablety */
@@ -101,14 +105,18 @@
         margin-bottom: 2rem;
       }
       
-      .gallery-grid { 
+      .comparison-grid, .image-pair { 
         grid-template-columns: 1fr; 
         gap: 1.5rem;
-        max-width: 500px;
       }
       
-      .gallery-item { 
-        padding: 1.5rem; 
+      .comparison-header {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      
+      .image-container img {
+        height: 250px;
       }
       
       .contact-footer { 
@@ -151,21 +159,12 @@
         margin-bottom: 1.5rem;
       }
       
-      .gallery-grid { 
-        gap: 1rem;
+      .section-title {
+        font-size: 1.6rem;
       }
       
-      .gallery-item { 
-        padding: 1.2rem; 
-      }
-      
-      .comparison-container {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }
-      
-      .comparison-container img {
-        height: 180px;
+      .image-container img {
+        height: 200px;
       }
       
       .contact-footer { 
@@ -222,12 +221,8 @@
         padding: 90px 12px 25px; 
       }
       
-      .gallery-item {
-        padding: 1rem;
-      }
-      
-      .comparison-container img {
-        height: 150px;
+      .image-container img {
+        height: 180px;
       }
     }
   </style>
@@ -248,56 +243,64 @@
 
   <main>
     <h1 class="page-title">GALERIA PRZED I PO</h1>
-    <p class="subtitle">Zobacz efekty mojej pracy - przemiana samochodów, które przeszły detailing</p>
+    <p class="subtitle">Zobacz efekty mojej pracy - łatwe porównanie stanu przed i po detailing</p>
     
-    <div class="gallery-grid">
-      <!-- PRZYKŁAD 1 - Zastąp ścieżki swoimi zdjęciami -->
-      <div class="gallery-item">
-        <h3>Renovacja lakieru</h3>
-        <div class="comparison-container">
-          <div>
-            <img src="images/przed-1.jpg" alt="Samochód przed renowacją lakieru">
-            <div class="before-label">Przed</div>
-          </div>
-          <div>
-            <img src="images/po-1.jpg" alt="Samochód po renowacji lakieru">
-            <div class="after-label">Po</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PRZYKŁAD 2 - Zastąp ścieżki swoimi zdjęciami -->
-      <div class="gallery-item">
-        <h3>Czyszczenie wnętrza</h3>
-        <div class="comparison-container">
-          <div>
-            <img src="images/przed-2.jpg" alt="Wnętrze samochodu przed czyszczeniem">
-            <div class="before-label">Przed</div>
-          </div>
-          <div>
-            <img src="images/po-2.jpg" alt="Wnętrze samochodu po czyszczeniu">
-            <div class="after-label">Po</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PRZYKŁAD 3 - Zastąp ścieżki swoimi zdjęciami -->
-      <div class="gallery-item">
-        <h3>Detailing kompleksowy</h3>
-        <div class="comparison-container">
-          <div>
-            <img src="images/przed-3.jpg" alt="Samochód przed detailingiem kompleksowym">
-            <div class="before-label">Przed</div>
-          </div>
-          <div>
-            <img src="images/po-3.jpg" alt="Samochód po detailing kompleksowym">
-            <div class="after-label">Po</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DODAJ WIĘCEJ ELEMENTÓW WEDŁUG POTRZEBY -->
+    <!-- NAGŁÓWEK PORÓWNAWCZY -->
+    <div class="comparison-header">
+      <h3>PRZED</h3>
+      <h3>PO</h3>
     </div>
+    
+    <!-- SEKCJA 1 - Zastąp ścieżki swoimi zdjęciami -->
+    <div class="image-pair">
+      <div class="image-container">
+        <img src="images/przed-1.jpg" alt="Samochód przed detailingiem">
+        <div class="image-label">Stan początkowy</div>
+      </div>
+      <div class="image-container">
+        <img src="images/po-1.jpg" alt="Samochód po detailing">
+        <div class="image-label">Efekt końcowy</div>
+      </div>
+    </div>
+
+    <!-- SEKCJA 2 - Zastąp ścieżki swoimi zdjęciami -->
+    <div class="image-pair">
+      <div class="image-container">
+        <img src="images/przed-2.jpg" alt="Wnętrze przed czyszczeniem">
+        <div class="image-label">Wnętrze przed</div>
+      </div>
+      <div class="image-container">
+        <img src="images/po-2.jpg" alt="Wnętrze po czyszczeniu">
+        <div class="image-label">Wnętrze po</div>
+      </div>
+    </div>
+
+    <!-- SEKCJA 3 - Zastąp ścieżki swoimi zdjęciami -->
+    <div class="image-pair">
+      <div class="image-container">
+        <img src="images/przed-3.jpg" alt="Lakier przed renowacją">
+        <div class="image-label">Lakier przed</div>
+      </div>
+      <div class="image-container">
+        <img src="images/po-3.jpg" alt="Lakier po renowacji">
+        <div class="image-label">Lakier po</div>
+      </div>
+    </div>
+
+    <!-- DODAJ WIĘCEJ PAR ZDJĘĆ WEDŁUG POTRZEBY -->
+    <!-- 
+    <div class="image-pair">
+      <div class="image-container">
+        <img src="images/przed-4.jpg" alt="Opis zdjęcia przed">
+        <div class="image-label">Stan przed</div>
+      </div>
+      <div class="image-container">
+        <img src="images/po-4.jpg" alt="Opis zdjęcia po">
+        <div class="image-label">Stan po</div>
+      </div>
+    </div>
+    -->
+
   </main>
 
   <!-- ELEGANCKA STOPKA KONTAKTOWA -->
