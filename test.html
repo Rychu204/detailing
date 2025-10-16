@@ -43,6 +43,12 @@
     
     .service-highlight {background:linear-gradient(135deg, rgba(56,189,248,0.15) 0%, rgba(96,165,250,0.1) 100%);}
     
+    .service-details {max-width:800px;margin:0 auto 2rem;background:#1e293b;padding:2rem;border-radius:15px;border:1px solid #334155}
+    .service-details h3 {color:#38bdf8;margin-bottom:1.5rem;text-align:center;font-size:1.4rem}
+    .service-features {display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:1rem}
+    .feature-item {display:flex;align-items:center;gap:0.8rem;color:#94a3b8}
+    .feature-item i {color:#38bdf8;font-size:1.1rem}
+    
     .cta-section {margin-top:3rem;padding:3rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
                   border-radius:15px;max-width:800px;margin-left:auto;margin-right:auto;text-align:center}
     .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
@@ -84,6 +90,7 @@
       .section-title { font-size: 1.6rem; }
       .price-table td { padding: 0.6rem 0; font-size: 0.9rem; }
       .cta-section { padding: 2rem; margin-top: 2rem; }
+      .service-features { grid-template-columns: 1fr; }
     }
     
     @media (max-width: 480px) {
@@ -113,9 +120,36 @@
     <!-- MYCIE CAŁEGO AUTA (WNĘTRZE + ZEWNĘTRZ) -->
     <div class="pricing-section">
       <h2 class="section-title">Mycie Kompleksowe</h2>
-      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
-        Pełne czyszczenie wnętrza i karoserii - najpopularniejszy pakiet
-      </p>
+      
+      <div class="service-details">
+        <h3>Pakiet obejmuje:</h3>
+        <div class="service-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Odkurzanie wnętrza</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie plastików i konserwacja</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie szyb od wewnątrz</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Mycie ręczne karoserii</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie felg i opon</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Zabezpieczenie lakieru</span>
+          </div>
+        </div>
+      </div>
       
       <div class="pricing-grid">
         <div class="pricing-card service-highlight">
@@ -189,9 +223,36 @@
     <!-- MYCIE TYLKO WNĘTRZA -->
     <div class="pricing-section">
       <h2 class="section-title">Tylko Wnętrze</h2>
-      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
-        Kompleksowe czyszczenie tylko wnętrza pojazdu
-      </p>
+      
+      <div class="service-details">
+        <h3>Pakiet obejmuje:</h3>
+        <div class="service-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Odkurzanie wnętrza</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie plastików i konserwacja</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie szyb od wewnątrz</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie kokpitu</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie bagażnika</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Konserwacja elementów skórzanych</span>
+          </div>
+        </div>
+      </div>
       
       <div class="pricing-grid">
         <div class="pricing-card">
@@ -262,9 +323,36 @@
     <!-- MYCIE TYLKO KAROSERII -->
     <div class="pricing-section">
       <h2 class="section-title">Tylko Karoseria</h2>
-      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
-        Kompleksowe mycie i konserwacja tylko zewnętrznej części pojazdu
-      </p>
+      
+      <div class="service-details">
+        <h3>Pakiet obejmuje:</h3>
+        <div class="service-features">
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Mycie ręczne karoserii</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie felg i opon</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Zabezpieczenie lakieru</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Czyszczenie szyb z zewnątrz</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Osuszanie i polerowanie</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check-circle"></i>
+            <span>Konserwacja uszczelek</span>
+          </div>
+        </div>
+      </div>
       
       <div class="pricing-grid">
         <div class="pricing-card">
