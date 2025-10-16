@@ -15,30 +15,42 @@
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
     
-    main {flex:1;display:flex;align-items:center;justify-content:center;
-          flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
-    .page-title {font-size:3.5rem;font-weight:700;margin-bottom:2rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
-                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    main {flex:1;padding:120px 24px 48px;box-sizing:border-box;max-width:1200px;margin:0 auto;width:100%}
+    .page-title {font-size:3.5rem;font-weight:700;margin-bottom:1.5rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}
     
-    .pricing-grid {display:grid;grid-template-columns:repeat(3, 1fr);gap:1.5rem;max-width:1200px;margin:2rem auto}
-    .pricing-card {background:#1e293b;padding:1.5rem;border-radius:15px;border-left:4px solid #38bdf8;
-                   box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:center;min-height:400px;display:flex;flex-direction:column}
-    .pricing-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:1rem}
-    .pricing-card h3 {color:#f1f5f9;margin-bottom:1rem;font-size:1.5rem}
-    .price {font-size:2rem;font-weight:700;color:#38bdf8;margin:1rem 0}
-    .price-desc {color:#94a3b8;font-size:1rem;line-height:1.5;margin-bottom:1rem;flex-grow:1}
-    .features-list {list-style:none;padding:0;text-align:left;color:#94a3b8;margin-bottom:1.5rem}
-    .features-list li {margin-bottom:0.5rem;padding-left:1.2rem;position:relative;font-size:0.9rem}
-    .features-list li:before {content:"✓";color:#38bdf8;position:absolute;left:0;font-weight:bold}
+    /* Style dla rozbudowanego cennika */
+    .pricing-section {margin-bottom:4rem}
+    .section-title {font-size:2rem;color:#f1f5f9;margin-bottom:2rem;text-align:center;border-bottom:2px solid #38bdf8;padding-bottom:0.5rem;display:inline-block}
     
-    .cta-section {margin-top:3rem;padding:2rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-                  border-radius:15px;max-width:800px}
+    .pricing-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));gap:2rem;margin:2rem auto}
+    .pricing-card {background:#1e293b;padding:2rem;border-radius:15px;border-left:4px solid #38bdf8;
+                   box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+    .pricing-header {text-align:center;margin-bottom:1.5rem}
+    .pricing-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:0.5rem}
+    .pricing-card h3 {color:#f1f5f9;margin:0;font-size:1.5rem}
+    .pricing-subtitle {color:#94a3b8;font-size:0.9rem;margin-top:0.5rem}
+    
+    .price-table {width:100%;border-collapse:collapse;margin:1.5rem 0}
+    .price-table tr {border-bottom:1px solid #334155}
+    .price-table tr:last-child {border-bottom:none}
+    .price-table td {padding:0.8rem 0;color:#94a3b8}
+    .price-table .service-name {text-align:left}
+    .price-table .price {text-align:right;color:#38bdf8;font-weight:600;font-size:1.1rem}
+    
+    .addon-service {background:rgba(56,189,248,0.1);padding:0.8rem;border-radius:8px;margin-top:1rem;border-left:3px solid #38bdf8}
+    .addon-service .service-name {color:#f1f5f9;font-weight:600}
+    
+    .service-highlight {background:linear-gradient(135deg, rgba(56,189,248,0.15) 0%, rgba(96,165,250,0.1) 100%);}
+    
+    .cta-section {margin-top:3rem;padding:3rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                  border-radius:15px;max-width:800px;margin-left:auto;margin-right:auto;text-align:center}
     .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
-                 padding:12px 25px;border-radius:50px;font-weight:600;cursor:pointer;
-                 font-size:1rem;text-decoration:none;display:inline-block;
+                 padding:15px 30px;border-radius:50px;font-weight:600;cursor:pointer;
+                 font-size:1.1rem;text-decoration:none;display:inline-block;
                  box-shadow:0 4px 15px rgba(56,189,248,0.3)}
     
-    /* ELEGANCKA STOPKA BEZ HOVER */
+    /* ELEGANCKA STOPKA */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
                      margin-top:auto;border-top:3px solid #38bdf8;position:relative}
     .contact-footer:before {content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
@@ -65,26 +77,32 @@
     
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
 
-    /* Responsywność dla mniejszych ekranów */
-    @media (max-width: 1024px) {
-      .pricing-grid {grid-template-columns:repeat(2, 1fr);max-width:800px}
+    /* ===== RESPONSYWNOŚĆ MOBILNA ===== */
+    @media (max-width: 768px) {
+      .page-title { font-size: 2.5rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.6rem; }
+      .price-table td { padding: 0.6rem 0; font-size: 0.9rem; }
+      .cta-section { padding: 2rem; margin-top: 2rem; }
     }
     
-    @media (max-width: 768px) {
-      .pricing-grid {grid-template-columns:1fr;max-width:400px}
-      .page-title {font-size:2.5rem}
+    @media (max-width: 480px) {
+      .page-title { font-size: 2rem; }
+      .pricing-card { padding: 1.5rem; }
+      .section-title { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
+      <div class="logo" style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
       <div>
         <a href="index.html">Strona główna</a>
         <a href="o-nas.html">O mnie</a>
         <a href="cennik.html" class="active">Cennik</a>
         <a href="umow-wizyte.html">Umów wizytę</a>
+        <a href="galeria.html">Galeria</a>
       </div>
     </nav>
   </header>
@@ -92,61 +110,213 @@
   <main>
     <h1 class="page-title">CENNIK USŁUG</h1>
     
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-spray-can"></i></div>
-        <h3>Mycie Ręczne</h3>
-        <div class="price">od 135 PLN</div>
-        <p class="price-desc">Kompleksowe mycie ręczne z dbałością o każdy detal</p>
-        <ul class="features-list">
-          <li>Mycie karoserii</li>
-          <li>Czyszczenie felg</li>
-          <li>Osuszanie ręczne</li>
-          <li>Mycie szyb</li>
-          <li>Zabezpieczenie powłoką</li>
-        </ul>
-      </div>
+    <!-- MYCIE CAŁEGO AUTA (WNĘTRZE + ZEWNĘTRZ) -->
+    <div class="pricing-section">
+      <h2 class="section-title">Mycie Kompleksowe</h2>
+      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
+        Pełne czyszczenie wnętrza i karoserii - najpopularniejszy pakiet
+      </p>
       
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-car"></i></div>
-        <h3>Pielęgnacja Wnętrza</h3>
-        <div class="price">od 130 PLN</div>
-        <p class="price-desc">Kompleksowe czyszczenie i pielęgnacja wnętrza</p>
-        <ul class="features-list">
-          <li>Odkurzanie wnętrza</li>
-          <li>Czyszczenie tapicerki</li>
-          <li>Pielęgnacja plastików</li>
-          <li>Czyszczenie szyb</li>
-        </ul>
-      </div>
-      
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-gem"></i></div>
-        <h3>Detailing Kompleksowy</h3>
-        <div class="price">od 225 PLN</div>
-        <p class="price-desc">Kompleksowe mycie całego samochodu na zewnątrz jak i w środku</p>
-        <ul class="features-list">
-          <li>Mycie karoserii</li>
-          <li>Czyszczenie felg</li>
-          <li>Osuszanie ręczne</li>
-          <li>Mycie szyb</li>
-          <li>Zabezpieczenie powłoką</li>
-          <li>Odkurzanie wnętrza</li>
-          <li>Czyszczenie tapicerki</li>
-          <li>Pielęgnacja plastików</li>
-          <li>Czyszczenie szyb</li>
-        </ul>
+      <div class="pricing-grid">
+        <div class="pricing-card service-highlight">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-car"></i></div>
+            <h3>Osobowy</h3>
+            <div class="pricing-subtitle">Sedan, Hatchback, Coupe</div>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie kompleksowe</td>
+              <td class="price">225 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="pricing-card service-highlight">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-truck"></i></div>
+            <h3>SUV</h3>
+            <div class="pricing-subtitle">Terenowy, Minivan, Van</div>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie kompleksowe</td>
+              <td class="price">285 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="pricing-card service-highlight">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-home"></i></div>
+            <h3>Camper</h3>
+            <div class="pricing-subtitle">Przyczepa kempingowa</div>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie kompleksowe</td>
+              <td class="price">320 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-    
+
+    <!-- MYCIE TYLKO WNĘTRZA -->
+    <div class="pricing-section">
+      <h2 class="section-title">Tylko Wnętrze</h2>
+      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
+        Kompleksowe czyszczenie tylko wnętrza pojazdu
+      </p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-chair"></i></div>
+            <h3>Osobowy</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie wnętrza</td>
+              <td class="price">150 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-chair"></i></div>
+            <h3>SUV</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie wnętrza</td>
+              <td class="price">190 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-chair"></i></div>
+            <h3>Camper</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie wnętrza</td>
+              <td class="price">215 zł</td>
+            </tr>
+          </table>
+          <div class="addon-service">
+            <table class="price-table">
+              <tr>
+                <td class="service-name">+ Pranie tapicerki</td>
+                <td class="price">100 zł</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MYCIE TYLKO KAROSERII -->
+    <div class="pricing-section">
+      <h2 class="section-title">Tylko Karoseria</h2>
+      <p style="text-align:center;color:#94a3b8;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto">
+        Kompleksowe mycie i konserwacja tylko zewnętrznej części pojazdu
+      </p>
+      
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-spray-can"></i></div>
+            <h3>Osobowy</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie karoserii</td>
+              <td class="price">125 zł</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-spray-can"></i></div>
+            <h3>SUV</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie karoserii</td>
+              <td class="price">160 zł</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-icon"><i class="fas fa-spray-can"></i></div>
+            <h3>Camper</h3>
+          </div>
+          <table class="price-table">
+            <tr>
+              <td class="service-name">Mycie karoserii</td>
+              <td class="price">180 zł</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKCJA CTA -->
     <div class="cta-section">
-      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:1.8rem">Masz pytania dotyczące cen?</h2>
-      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1rem">Skontaktuj się ze mną, aby uzyskać dokładną wycenę dla Twojego samochodu</p>
+      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:2rem">Masz pytania dotyczące cen?</h2>
+      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1.1rem">Skontaktuj się ze mną, aby uzyskać dokładną wycenę dla Twojego samochodu</p>
       <a href="umow-wizyte.html" class="cta-button">Umów konsultację</a>
     </div>
   </main>
 
-  <!-- ELEGANCKA STOPKA KONTAKTOWA -->
+  <!-- STOPKA KONTAKTOWA -->
   <footer class="contact-footer">
     <div class="contact-container">
       <h2 class="contact-title">Skontaktuj się ze mną</h2>
@@ -182,19 +352,11 @@
           </div>
         </div>
       </div>
-      
-      </div>
-      
+
       <div class="copyright">
-        © 2025 PerłaDetailing. Wszelkie prawa zastrzeżone. | Projekt i realizacja: PerłaDetailing
+        © 2025 PerłaDetailing. Wszelkie prawa zastrzeżone.
       </div>
     </div>
   </footer>
 </body>
 </html>
-
-
-
-
-
-
