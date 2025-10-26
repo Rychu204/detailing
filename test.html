@@ -244,6 +244,35 @@
             min-height: 100px;
         }
 
+        /* Checkbox dla prania tapicerki */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            accent-color: #38bdf8;
+        }
+
+        .checkbox-label {
+            color: #f1f5f9;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .price-badge {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+
         .submit-btn {
             width: 100%;
             padding: 15px;
@@ -409,6 +438,15 @@
                         </select>
                     </div>
 
+                    <!-- Checkbox dla prania tapicerki -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" class="checkbox-input" id="fabricCleaning">
+                        <label class="checkbox-label" for="fabricCleaning">
+                            Pranie tapicerki
+                            <span class="price-badge">+100 zł</span>
+                        </label>
+                    </div>
+
                     <div class="form-group">
                         <label class="form-label">Wybrana Data</label>
                         <input type="text" class="form-input" id="selectedDate" readonly>
@@ -462,8 +500,15 @@
 
             async loadBookings() {
                 try {
+                    console.log('Ładowanie rezerwacji z Google Sheets...');
                     const response = await fetch(this.googleSheetsURL + '?action=getBookings');
+                    
+                    if (!response.ok) {
+                        throw new Error(`Błąd HTTP: ${response.status}`);
+                    }
+                    
                     const bookings = await response.json();
+                    console.log('Załadowane rezerwacje:', bookings);
                     
                     this.initializeAllSlots();
                     
@@ -529,6 +574,11 @@
                 formInputs.forEach(input => {
                     input.addEventListener('input', () => this.validateForm());
                     input.addEventListener('change', () => this.validateForm());
+                });
+
+                // Event listener dla checkboxa prania tapicerki
+                document.getElementById('fabricCleaning').addEventListener('change', () => {
+                    this.validateForm();
                 });
             }
 
@@ -673,6 +723,7 @@
                     email: document.getElementById('email').value,
                     samochod: document.getElementById('carModel').value,
                     usluga: document.getElementById('serviceType').value,
+                    pranie_tapicerki: document.getElementById('fabricCleaning').checked ? 'TAK' : 'NIE',
                     data: this.selectedDate,
                     godzina: this.selectedTime,
                     uwagi: document.getElementById('notes').value,
@@ -685,6 +736,8 @@
                 document.body.classList.add('loading');
 
                 try {
+                    console.log('Wysyłanie danych:', formData);
+                    
                     const response = await fetch(this.googleSheetsURL, {
                         method: 'POST',
                         headers: {
@@ -693,23 +746,30 @@
                         body: JSON.stringify(formData)
                     });
 
-                    const result = await response.json();
-                    
-                    if (result.status === 'success') {
-                        // Zablokuj zarezerwowany termin
-                        const index = this.availableSlots[this.selectedDate].indexOf(this.selectedTime);
-                        if (index > -1) {
-                            this.availableSlots[this.selectedDate].splice(index, 1);
-                        }
+                    console.log('Odpowiedź serwera:', response);
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Wynik:', result);
                         
-                        alert('Rezerwacja została wysłana! Skontaktujemy się w celu potwierdzenia terminu.');
-                        this.resetForm();
+                        if (result.status === 'success') {
+                            // Zablokuj zarezerwowany termin
+                            const index = this.availableSlots[this.selectedDate].indexOf(this.selectedTime);
+                            if (index > -1) {
+                                this.availableSlots[this.selectedDate].splice(index, 1);
+                            }
+                            
+                            alert('✅ Rezerwacja została wysłana! Skontaktujemy się w celu potwierdzenia terminu.');
+                            this.resetForm();
+                        } else {
+                            throw new Error(result.message || 'Nieznany błąd serwera');
+                        }
                     } else {
-                        throw new Error(result.message);
+                        throw new Error(`Błąd HTTP: ${response.status}`);
                     }
                 } catch (error) {
-                    console.error('Błąd:', error);
-                    alert('Błąd podczas wysyłania rezerwacji. Spróbuj ponownie.');
+                    console.error('Błąd podczas wysyłania rezerwacji:', error);
+                    alert('❌ Błąd podczas wysyłania rezerwacji: ' + error.message + '\n\nSpróbuj ponownie lub skontaktuj się bezpośrednio.');
                 } finally {
                     submitBtn.textContent = 'ZAREZERWUJ TERMIN';
                     document.body.classList.remove('loading');
