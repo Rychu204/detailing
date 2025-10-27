@@ -5,9 +5,378 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PerłaDetailing - Rezerwacja Terminu</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudlare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* ... (stylowanie pozostaje bez zmian) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #0b1220;
+            color: #f1f5f9;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 18px 24px;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 18px;
+        }
+
+        nav a.active {
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        main {
+            padding: 120px 24px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calendar-section, .form-section {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #f1f5f9;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Kalendarz */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav {
+            background: #38bdf8;
+            color: #0b1220;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .calendar-nav:hover {
+            background: #60a5fa;
+        }
+
+        .current-month {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #94a3b8;
+            padding: 10px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: #334155;
+        }
+
+        .calendar-day.available {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+        }
+
+        .calendar-day.selected {
+            background: #38bdf8;
+            color: #0b1220;
+            font-weight: 600;
+        }
+
+        .calendar-day.unavailable {
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        .calendar-day.past {
+            color: #475569;
+            cursor: not-allowed;
+        }
+
+        /* Godziny */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .time-slot {
+            padding: 12px;
+            text-align: center;
+            background: #334155;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            background: #475569;
+        }
+
+        .time-slot.selected {
+            background: #38bdf8;
+            color: #0b1220;
+            font-weight: 600;
+        }
+
+        .time-slot.unavailable {
+            background: #1e293b;
+            color: #64748b;
+            cursor: not-allowed;
+        }
+
+        /* Formularz */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            color: #f1f5f9;
+            font-size: 1rem;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Checkbox dla prania tapicerki */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            accent-color: #38bdf8;
+        }
+
+        .checkbox-label {
+            color: #f1f5f9;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .price-badge {
+            background: rgba(56, 189, 248, 0.2);
+            color: #38bdf8;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #38bdf8, #60a5fa);
+            color: #0b1220;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #64748b;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .export-btn {
+            width: 100%;
+            padding: 12px;
+            background: #64748b;
+            color: #f1f5f9;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .export-btn:hover {
+            background: #475569;
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* Stopka */
+        .contact-footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 4rem 2rem;
+            margin-top: auto;
+            border-top: 3px solid #38bdf8;
+            position: relative;
+        }
+
+        .contact-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #f1f5f9;
+            font-weight: 700;
+            background: linear-gradient(45deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            .page-title { font-size: 2.5rem; }
+            .time-slots { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .page-title { font-size: 2rem; }
+            .time-slots { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -115,12 +484,11 @@
                     <button type="submit" class="submit-btn" id="submitBtn" disabled>
                         ZAREZERWUJ TERMIN
                     </button>
-                </form>
 
-                <!-- Przycisk eksportu rezerwacji -->
-                <button type="button" class="submit-btn" id="exportBtn" style="margin-top: 10px; background: #64748b;">
-                    EKSPORTUJ REZERWACJE (CSV)
-                </button>
+                    <button type="button" class="export-btn" id="exportBtn">
+                        <i class="fas fa-download"></i> EKSPORTUJ WSZYSTKIE REZERWACJE
+                    </button>
+                </form>
             </div>
         </div>
     </main>
@@ -157,11 +525,10 @@
                     // Inicjalizuj wszystkie sloty
                     this.initializeAllSlots();
                     
-                    // Załaduj rezerwacje z localStorage
-                    const bookings = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
-                    console.log('Załadowane rezerwacje z localStorage:', bookings);
+                    // Załaduj rezerwacje z localStorage i zablokuj terminy
+                    const bookings = this.getBookings();
+                    console.log('Załadowane rezerwacje:', bookings);
                     
-                    // Blokowanie zajętych terminów
                     bookings.forEach(booking => {
                         const date = booking.data;
                         const time = booking.godzina;
@@ -234,7 +601,6 @@
                     input.addEventListener('change', () => this.validateForm());
                 });
 
-                // Event listener dla checkboxa prania tapicerki
                 document.getElementById('fabricCleaning').addEventListener('change', () => {
                     this.validateForm();
                 });
@@ -363,11 +729,9 @@
                 const carModel = document.getElementById('carModel').value.trim();
                 const serviceType = document.getElementById('serviceType').value;
                 
-                // Walidacja telefonu (min. 9 cyfr)
                 const phoneRegex = /^[0-9+\-\s()]{9,}$/;
                 const isPhoneValid = phoneRegex.test(phone.replace(/\s/g, ''));
                 
-                // Walidacja email (jeśli podany)
                 const email = document.getElementById('email').value.trim();
                 let isEmailValid = true;
                 if (email) {
@@ -387,6 +751,17 @@
                 submitBtn.disabled = !isFormValid;
             }
 
+            getBookings() {
+                return JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+            }
+
+            saveBooking(booking) {
+                const bookings = this.getBookings();
+                bookings.push(booking);
+                localStorage.setItem(this.storageKey, JSON.stringify(bookings));
+                return bookings.length;
+            }
+
             async submitBooking() {
                 const formData = {
                     imie: document.getElementById('name').value,
@@ -398,21 +773,20 @@
                     data: this.selectedDate,
                     godzina: this.selectedTime,
                     uwagi: document.getElementById('notes').value,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    status: 'NOWA'
                 };
 
                 const submitBtn = document.getElementById('submitBtn');
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'WYSYŁANIE...';
+                submitBtn.textContent = 'ZAPISYWANIE...';
                 document.body.classList.add('loading');
 
                 try {
-                    console.log('Wysyłanie danych:', formData);
+                    console.log('Zapisywanie rezerwacji:', formData);
                     
                     // Zapisz w localStorage
-                    const existingBookings = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
-                    existingBookings.push(formData);
-                    localStorage.setItem(this.storageKey, JSON.stringify(existingBookings));
+                    const bookingCount = this.saveBooking(formData);
 
                     // Zablokuj termin lokalnie
                     const index = this.availableSlots[this.selectedDate].indexOf(this.selectedTime);
@@ -420,11 +794,18 @@
                         this.availableSlots[this.selectedDate].splice(index, 1);
                     }
                     
-                    alert('✅ Rezerwacja została zapisana! Skontaktujemy się w celu potwierdzenia terminu.\n\nUWAGA: Ta rezerwacja jest zapisana tylko w tej przeglądarce. Aby ją utrwalić, wyeksportuj rezerwacje i wyślij do właściciela.');
+                    // Automatycznie wyślij email
+                    this.sendAutoEmail(formData);
+                    
+                    const successMessage = `✅ Rezerwacja #${bookingCount} została zapisana!\n\n` +
+                                         `Dane zostały zapisane lokalnie i wysłane emailem.\n` +
+                                         `Skontaktujemy się w celu potwierdzenia terminu.`;
+                    
+                    alert(successMessage);
                     this.resetForm();
 
                 } catch (error) {
-                    console.error('Błąd podczas wysyłania rezerwacji:', error);
+                    console.error('Błąd podczas zapisywania rezerwacji:', error);
                     this.showManualBookingOption(formData);
                 } finally {
                     submitBtn.textContent = 'ZAREZERWUJ TERMIN';
@@ -433,27 +814,64 @@
                 }
             }
 
-            showManualBookingOption(formData) {
-                const manualData = `
-IMIĘ I NAZWISKO: ${formData.imie}
-TELEFON: ${formData.telefon}
-EMAIL: ${formData.email}
-SAMOCHÓD: ${formData.samochod}
-USŁUGA: ${formData.usluga}
-PRANIE TAPICERKI: ${formData.pranie_tapicerki}
-DATA: ${this.formatDate(formData.data)}
-GODZINA: ${formData.godzina}
-UWAGI: ${formData.uwagi}
+            sendAutoEmail(formData) {
+                const subject = `Nowa rezerwacja - ${formData.imie} - ${formData.data} ${formData.godzina}`;
+                
+                const emailBody = `
+NOWA REZERWACJA - PerłaDetailing
+
+Dane klienta:
+Imię i nazwisko: ${formData.imie}
+Telefon: ${formData.telefon}
+Email: ${formData.email || 'Nie podano'}
+Samochód: ${formData.samochod}
+
+Szczegóły rezerwacji:
+Usługa: ${formData.usluga}
+Data: ${this.formatDate(formData.data)}
+Godzina: ${formData.godzina}
+Pranie tapicerki: ${formData.pranie_tapicerki}
+
+Dodatkowe uwagi:
+${formData.uwagi || 'Brak'}
+
+Data złożenia rezerwacji: ${new Date().toLocaleString('pl-PL')}
                 `.trim();
 
-                const message = `❌ Nie udało się zapisać rezerwacji automatycznie.\n\nSkopiuj poniższe dane i wyślij je SMS-em lub WhatsAppem:\n\n${manualData}\n\nTelefon: +48 123 456 789`;
+                const mailtoLink = `mailto:ryszard.zemfler@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Otwórz klienta pocztowego
+                window.open(mailtoLink, '_blank');
+            }
+
+            showManualBookingOption(formData) {
+                const manualData = `
+NOWA REZERWACJA - PerłaDetailing
+
+DANE KLIENTA:
+Imię i nazwisko: ${formData.imie}
+Telefon: ${formData.telefon}
+Email: ${formData.email || 'Nie podano'}
+Samochód: ${formData.samochod}
+
+SZCZEGÓŁY REZERWACJI:
+Usługa: ${formData.usluga}
+Data: ${this.formatDate(formData.data)}
+Godzina: ${formData.godzina}
+Pranie tapicerki: ${formData.pranie_tapicerki}
+
+DODATKOWE UWAGI:
+${formData.uwagi || 'Brak'}
+
+Data złożenia: ${new Date().toLocaleString('pl-PL')}
+                `.trim();
+
+                const message = `❌ Nie udało się zapisać rezerwacji automatycznie.\n\nSkopiuj poniższe dane i wyślij je na email: ryszard.zemfler@gmail.com\n\n${manualData}`;
                 
                 if (confirm(message + '\n\nKliknij OK aby skopiować dane do schowka.')) {
-                    // Skopiuj do schowka
                     navigator.clipboard.writeText(manualData).then(() => {
-                        alert('Dane skopiowane do schowka!');
+                        alert('Dane skopiowane do schowka! Możesz je wkleić do emaila.');
                     }).catch(() => {
-                        // Fallback dla przeglądarek bez wsparcia clipboard
                         const textArea = document.createElement('textarea');
                         textArea.value = manualData;
                         document.body.appendChild(textArea);
@@ -466,16 +884,14 @@ UWAGI: ${formData.uwagi}
             }
 
             exportBookings() {
-                const bookings = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+                const bookings = this.getBookings();
                 if (bookings.length === 0) {
                     alert('Brak zapisanych rezerwacji.');
                     return;
                 }
 
-                // Nagłówki CSV
-                const headers = ['Imię', 'Telefon', 'Email', 'Samochód', 'Usługa', 'Pranie tapicerki', 'Data', 'Godzina', 'Uwagi', 'Timestamp'];
+                const headers = ['Imię', 'Telefon', 'Email', 'Samochód', 'Usługa', 'Pranie tapicerki', 'Data', 'Godzina', 'Uwagi', 'Timestamp', 'Status'];
                 
-                // Konwersja do CSV
                 const csvContent = [
                     headers.join(','),
                     ...bookings.map(booking => [
@@ -488,7 +904,8 @@ UWAGI: ${formData.uwagi}
                         `"${booking.data}"`,
                         `"${booking.godzina}"`,
                         `"${booking.uwagi}"`,
-                        `"${booking.timestamp}"`
+                        `"${booking.timestamp}"`,
+                        `"${booking.status}"`
                     ].join(','))
                 ].join('\n');
 
@@ -501,6 +918,8 @@ UWAGI: ${formData.uwagi}
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
+                
+                alert(`Wyeksportowano ${bookings.length} rezerwacji do pliku CSV.`);
             }
 
             resetForm() {
