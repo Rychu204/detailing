@@ -32,6 +32,25 @@
                  box-shadow:0 4px 15px rgba(56,189,248,0.3);transition:all 0.3s ease}
     .cta-button:hover {transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,189,248,0.4)}
 
+    /* Przycisk rezerwacji Setmore dopasowany do stylu strony */
+    .anywhere-book-now-button {
+      background:linear-gradient(45deg, #38bdf8, #60a5fa) !important;
+      color:#0b1220 !important;
+      border:none !important;
+      padding:15px 30px !important;
+      border-radius:50px !important;
+      font-weight:600 !important;
+      cursor:pointer !important;
+      font-size:1.1rem !important;
+      font-family:Inter,Arial,sans-serif !important;
+      box-shadow:0 4px 15px rgba(56,189,248,0.3) !important;
+      transition:all 0.3s ease !important;
+    }
+    .anywhere-book-now-button:hover {
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(56,189,248,0.4);
+    }
+
     /* ELEGANCKA STOPKA BEZ HOVER */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
                      margin-top:auto;border-top:3px solid #38bdf8;position:relative}
@@ -59,30 +78,153 @@
 
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
 
-    /* Przycisk rezerwacji Setmore dopasowany do stylu strony */
-    .anywhere-book-now-button {
-      background:linear-gradient(45deg, #38bdf8, #60a5fa) !important;
-      color:#0b1220 !important;
-      border:none !important;
-      padding:15px 30px !important;
-      border-radius:50px !important;
-      font-weight:600 !important;
-      cursor:pointer !important;
-      font-size:1.1rem !important;
-      font-family:Inter,Arial,sans-serif !important;
-      box-shadow:0 4px 15px rgba(56,189,248,0.3) !important;
-      transition:all 0.3s ease !important;
+    /* ===== RESPONSYWNOŚĆ MOBILNA ===== */
+
+    /* Tablety i mniejsze laptopy */
+    @media (max-width: 1024px) {
+      .page-title { font-size: 3rem; }
     }
-    .anywhere-book-now-button:hover {
-      transform:translateY(-2px);
-      box-shadow:0 6px 20px rgba(56,189,248,0.4);
+
+    /* Tablety */
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      nav div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0;
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      main {
+        padding: 110px 20px 40px;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .booking-info {
+        padding: 1.5rem;
+      }
+
+      .contact-footer {
+        padding: 3rem 1.5rem;
+      }
+
+      .contact-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Telefony */
+    @media (max-width: 480px) {
+      header { padding: 12px 15px; }
+
+      nav div {
+        gap: 8px;
+      }
+
+      nav a {
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      main {
+        padding: 100px 15px 30px;
+      }
+
+      .page-title {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .booking-info {
+        padding: 1.2rem;
+      }
+
+      .cta-button, .anywhere-book-now-button {
+        padding: 12px 25px !important;
+        font-size: 1rem !important;
+      }
+
+      .contact-footer {
+        padding: 2rem 1rem;
+      }
+
+      .contact-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .contact-card {
+        padding: 1.5rem;
+      }
+
+      .contact-info {
+        font-size: 1rem;
+      }
+
+      .social-links {
+        gap: 1rem;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+
+      .copyright {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Bardzo małe telefony */
+    @media (max-width: 360px) {
+      nav a {
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+
+      main {
+        padding: 90px 12px 25px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
+      <div class="logo" style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
       <div>
         <a href="index.html">Strona główna</a>
         <a href="o-nas.html">O mnie</a>
@@ -101,11 +243,12 @@
         <p>Aby umówić wizytę, kliknij przycisk poniżej. Otworzy się kalendarz, w którym wybierzesz usługę i dogodny termin.</p>
         <p>Rezerwacja jest potwierdzana automatycznie — dostaniesz mail z potwierdzeniem od razu po wyborze terminu.</p>
 
-        <!-- Kalendarz Setmore - przycisk otwierający rezerwację -->
-        <button id="Anywhere_button_iframe" class="anywhere-book-now-button"
-                data-booking-url="https://ryszard6qru.setmore.com" data-new-tab="false">
+        <!-- Kalendarz Setmore - link działający nawet z blokerami reklam -->
+        <a id="Anywhere_button_iframe" class="anywhere-book-now-button"
+           href="https://ryszard6qru.setmore.com/ryszard" target="_blank" rel="noopener"
+           data-booking-url="https://ryszard6qru.setmore.com/ryszard" data-new-tab="false">
           <i class="fas fa-calendar-check"></i> Przejdź do formularza rezerwacji
-        </button>
+        </a>
       </div>
     </div>
   </main>
@@ -117,5 +260,43 @@
 
       <div class="contact-grid">
         <div class="contact-card">
-          <h3><i class="fas fa-map-marker-alt
-              
+          <h3><i class="fas fa-map-marker-alt contact-icon"></i> Adres</h3>
+          <div class="contact-info">
+            <strong>PerłaDetailing</strong><br>
+            Gdańsk<br>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3><i class="fas fa-clock contact-icon"></i> Godziny otwarcia</h3>
+          <div class="contact-info">
+            <strong>Poniedziałek - Piątek</strong><br>
+            8:00 - 18:00<br><br>
+            <strong>Sobota - Niedziela</strong><br>
+            9:00 - 14:00<br><br>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3><i class="fas fa-phone contact-icon"></i> Kontakt</h3>
+          <div class="contact-info">
+            <strong>Telefon</strong><br>
+            +48 505 908 101<br><br>
+            <strong>Email</strong><br>
+            u7192673089@gmail.com<br><br>
+            <strong>WhatsApp</strong><br>
+            +48 505 908 101
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        © 2025 PerłaDetailing. Wszelkie prawa zastrzeżone. | Projekt i realizacja: PerłaDetailing
+      </div>
+    </div>
+  </footer>
+
+  <!-- Skrypt przycisku rezerwacji Setmore -->
+  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+</body>
+</html>
