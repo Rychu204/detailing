@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PerłaDetailing — Cennik</title>
+  <title>PerłaDetailing — Umów wizytę</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -14,39 +14,25 @@
     nav {max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
     nav a {color:rgba(255,255,255,0.85);text-decoration:none;font-weight:600;margin-left:18px}
     nav a.active {color:#38bdf8;border-bottom:2px solid #38bdf8}
-    
-    main {flex:1;padding:120px 24px 48px;box-sizing:border-box;max-width:1200px;margin:0 auto;width:100%}
-    .page-title {font-size:3.5rem;font-weight:700;margin-bottom:1.5rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
-                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center}
-    
-    .pricing-section {margin-bottom:4rem}
-    .section-title {font-size:2rem;color:#f1f5f9;margin-bottom:2rem;text-align:center;border-bottom:2px solid #38bdf8;padding-bottom:0.5rem;display:inline-block}
-    
-    .pricing-grid {display:grid;grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));gap:2rem;margin:2rem auto}
-    .pricing-card {background:#1e293b;padding:2rem;border-radius:15px;border-left:4px solid #38bdf8;
-                   box-shadow:0 5px 15px rgba(0,0,0,0.1);display:flex;flex-direction:column}
-    .pricing-header {text-align:center;margin-bottom:1.5rem}
-    .pricing-icon {font-size:2.5rem;color:#38bdf8;margin-bottom:0.5rem}
-    .pricing-card h3 {color:#f1f5f9;margin:0;font-size:1.5rem}
-    .pricing-subtitle {color:#94a3b8;font-size:0.9rem;margin-top:0.5rem}
-    
-    .service-features {list-style:none;padding:0;margin:0 0 1.5rem 0;flex-grow:1}
-    .service-features li {display:flex;align-items:center;gap:0.8rem;color:#94a3b8;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-    .service-features li i {color:#38bdf8;font-size:1rem;width:1.2rem;text-align:center}
-    
-    .price-box {text-align:center;margin-top:auto;padding-top:1rem;border-top:1px solid #334155}
-    .price {font-size:2.2rem;color:#38bdf8;font-weight:700}
-    .price-note {color:#94a3b8;font-size:0.85rem;margin-top:0.2rem}
-    
-    .badge {display:inline-block;background:rgba(56,189,248,0.2);color:#38bdf8;padding:0.2rem 0.8rem;border-radius:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
-    
-    .cta-section {margin-top:3rem;padding:3rem;background:linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-                  border-radius:15px;max-width:800px;margin-left:auto;margin-right:auto;text-align:center}
+
+    main {flex:1;display:flex;align-items:center;justify-content:center;
+          flex-direction:column;padding:120px 24px 48px;box-sizing:border-box;text-align:center}
+    .page-title {font-size:3.5rem;font-weight:700;margin-bottom:2rem;background:linear-gradient(45deg, #38bdf8, #60a5fa);
+                 -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    .booking-container {max-width:800px;margin:0 auto;text-align:center}
+    .booking-info {background:#1e293b;padding:2rem;border-radius:15px;border-left:4px solid #38bdf8;
+                   box-shadow:0 5px 15px rgba(0,0,0,0.1);margin-bottom:2rem}
+    .booking-info h2 {color:#f1f5f9;margin-bottom:1rem}
+    .booking-info p {color:#94a3b8;line-height:1.6;margin-bottom:1.5rem}
+
     .cta-button {background:linear-gradient(45deg, #38bdf8, #60a5fa);color:#0b1220;border:none;
                  padding:15px 30px;border-radius:50px;font-weight:600;cursor:pointer;
                  font-size:1.1rem;text-decoration:none;display:inline-block;
-                 box-shadow:0 4px 15px rgba(56,189,248,0.3)}
-    
+                 box-shadow:0 4px 15px rgba(56,189,248,0.3);transition:all 0.3s ease}
+    .cta-button:hover {transform:translateY(-2px);box-shadow:0 6px 20px rgba(56,189,248,0.4)}
+
+    /* ELEGANCKA STOPKA BEZ HOVER */
     .contact-footer {background:linear-gradient(135deg, #0f172a 0%, #1e293b 100%);padding:4rem 2rem;
                      margin-top:auto;border-top:3px solid #38bdf8;position:relative}
     .contact-footer:before {content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
@@ -63,173 +49,73 @@
     .contact-icon {font-size:1.8rem;color:#38bdf8}
     .contact-info {color:#94a3b8;font-size:1.1rem;line-height:1.8}
     .contact-info strong {color:#f1f5f9}
+
+    .social-section {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1)}
+    .social-title {color:#94a3b8;margin-bottom:1.5rem;font-size:1.1rem}
+    .social-links {display:flex;justify-content:center;gap:1.5rem}
+    .social-link {width:50px;height:50px;background:rgba(56,189,248,0.1);border-radius:50%;display:flex;
+                  align-items:center;justify-content:center;color:#38bdf8;font-size:1.3rem;text-decoration:none;
+                  border:1px solid rgba(56,189,248,0.3)}
+
     .copyright {margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:#64748b;font-size:0.9rem}
 
-    @media (max-width: 768px) {
-      .page-title { font-size: 2.5rem; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .section-title { font-size: 1.6rem; }
-      .price { font-size: 1.8rem; }
-      .cta-section { padding: 2rem; margin-top: 2rem; }
+    /* Przycisk rezerwacji Setmore dopasowany do stylu strony */
+    .anywhere-book-now-button {
+      background:linear-gradient(45deg, #38bdf8, #60a5fa) !important;
+      color:#0b1220 !important;
+      border:none !important;
+      padding:15px 30px !important;
+      border-radius:50px !important;
+      font-weight:600 !important;
+      cursor:pointer !important;
+      font-size:1.1rem !important;
+      font-family:Inter,Arial,sans-serif !important;
+      box-shadow:0 4px 15px rgba(56,189,248,0.3) !important;
+      transition:all 0.3s ease !important;
     }
-    @media (max-width: 480px) {
-      .page-title { font-size: 2rem; }
-      .pricing-card { padding: 1.5rem; }
-      .section-title { font-size: 1.4rem; }
+    .anywhere-book-now-button:hover {
+      transform:translateY(-2px);
+      box-shadow:0 6px 20px rgba(56,189,248,0.4);
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div class="logo" style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
+      <div style="font-weight:700;font-size:1.5rem">PerłaDetailing</div>
       <div>
         <a href="index.html">Strona główna</a>
         <a href="o-nas.html">O mnie</a>
-        <a href="cennik.html" class="active">Cennik</a>
-        <a href="umow-wizyte.html">Umów wizytę</a>
-        <a href="galeria.html">Galeria</a>
+        <a href="cennik.html">Cennik</a>
+        <a href="umow-wizyte.html" class="active">Umów wizytę</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <h1 class="page-title">CENNIK USŁUG</h1>
-    
-    <!-- OFERTA 1: Odświeżenie i Pielęgnacja -->
-    <div class="pricing-section">
-      <h2 class="section-title">Odświeżenie i Pielęgnacja</h2>
-      <p style="text-align:center;color:#94a3b8;max-width:700px;margin:0 auto 2rem;">
-        Idealne dla zapracowanych – utrzymuj auto w czystości bez marnowania weekendów. 
-        Szybka usługa z możliwością stałego abonamentu.
-      </p>
-      <div class="pricing-grid">
-        <!-- Osobowy -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-icon"><i class="fas fa-car"></i></div>
-            <h3>Osobowy</h3>
-            <div class="pricing-subtitle">Sedan, Hatchback, Coupe</div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check-circle"></i> Dokładne odkurzenie podłogi, foteli, bagażnika i zakamarków</li>
-            <li><i class="fas fa-check-circle"></i> Wymycie i odtłuszczenie plastików, deski rozdzielczej i konsoli centralnej</li>
-            <li><i class="fas fa-check-circle"></i> Mycie szyb od wewnątrz</li>
-            <li><i class="fas fa-check-circle"></i>Wyczyszczenie progów</li>
-          </ul>
-          <div class="price-box">
-            <div class="price">200 zł</div>
-            <div class="price-note">za wizytę &bull; <span class="badge">Abonament</span></div>
-          </div>
-        </div>
-        <!-- SUV -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-icon"><i class="fas fa-truck"></i></div>
-            <h3>SUV</h3>
-            <div class="pricing-subtitle">Terenowy, Minivan, Van</div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check-circle"></i> Dokładne odkurzenie podłogi, foteli, bagażnika i zakamarków</li>
-            <li><i class="fas fa-check-circle"></i> Wymycie i odtłuszczenie plastików, deski rozdzielczej i konsoli centralnej</li>
-            <li><i class="fas fa-check-circle"></i> Mycie szyb od wewnątrz</li>
-            <li><i class="fas fa-check-circle"></i>Wyczyszczenie progów</li>
-          </ul>
-          <div class="price-box">
-            <div class="price">250 zł</div>
-            <div class="price-note">za wizytę &bull; <span class="badge">Abonament</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="page-title">UMÓW WIZYTĘ</h1>
 
-    <!-- OFERTA 2: Głębokie Detailingowe Czyszczenie -->
-    <div class="pricing-section">
-      <h2 class="section-title">Głębokie Detailingowe Czyszczenie</h2>
-      <p style="text-align:center;color:#94a3b8;max-width:700px;margin:0 auto 2rem;">
-        Renowacja wnętrza – dla osób kupujących / sprzedających auto, po przewożeniu zwierząt 
-        lub gdy dawno nie było gruntownego czyszczenia.
-      </p>
-      <div class="pricing-grid">
-        <!-- Osobowy -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-icon"><i class="fas fa-car"></i></div>
-            <h3>Osobowy</h3>
-            <div class="pricing-subtitle">Sedan, Hatchback, Coupe</div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check-circle"></i> Demontaż foteli i tylnej kanapy (bezpieczne odłączenie instalacji)</li>
-            <li><i class="fas fa-check-circle"></i> Pranie ekstrakcyjne / parowe tapicerki, podłogi i boczków</li>
-            <li><i class="fas fa-check-circle"></i> Czyszczenie trudno dostępnych miejsc (pod fotelami, szyny, pasy bezpieczeństwa)</li>
-            <li><i class="fas fa-check-circle"></i> Pielęgnacja i zabezpieczenie plastików odżywką UV</li>
-            <li><i class="fas fa-check-circle"></i>Wyczyszczenie progów</li>
-          </ul>
-          <div class="price-box">
-            <div class="price">450 zł</div>
-            <div class="price-note">cena za kompleksowe czyszczenie</div>
-          </div>
-        </div>
-        <!-- SUV -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <div class="pricing-icon"><i class="fas fa-truck"></i></div>
-            <h3>SUV</h3>
-            <div class="pricing-subtitle">Terenowy, Minivan, Van</div>
-          </div>
-          <ul class="service-features">
-            <li><i class="fas fa-check-circle"></i> Demontaż foteli i tylnej kanapy (bezpieczne odłączenie instalacji)</li>
-            <li><i class="fas fa-check-circle"></i> Pranie ekstrakcyjne / parowe tapicerki, podłogi i boczków</li>
-            <li><i class="fas fa-check-circle"></i> Czyszczenie trudno dostępnych miejsc (pod fotelami, szyny, pasy bezpieczeństwa)</li>
-            <li><i class="fas fa-check-circle"></i> Pielęgnacja i zabezpieczenie plastików odżywką UV</li>
-            <li><i class="fas fa-check-circle"></i>Wyczyszczenie progów</li>
-          </ul>
-          <div class="price-box">
-            <div class="price">550 zł</div>
-            <div class="price-note">cena za kompleksowe czyszczenie</div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div class="booking-container">
+      <div class="booking-info">
+        <h2>Proces rezerwacji</h2>
+        <p>Aby umówić wizytę, kliknij przycisk poniżej. Otworzy się kalendarz, w którym wybierzesz usługę i dogodny termin.</p>
+        <p>Rezerwacja jest potwierdzana automatycznie — dostaniesz mail z potwierdzeniem od razu po wyborze terminu.</p>
 
-    <!-- SEKCJA CTA -->
-    <div class="cta-section">
-      <h2 style="color:#f1f5f9;margin-bottom:1.5rem;font-size:2rem">Masz pytania dotyczące cen?</h2>
-      <p style="color:#94a3b8;margin-bottom:2rem;font-size:1.1rem">Skontaktuj się ze mną, aby uzyskać dokładną wycenę dla Twojego samochodu</p>
-      <a href="umow-wizyte.html" class="cta-button">Umów konsultację</a>
+        <!-- Kalendarz Setmore - przycisk otwierający rezerwację -->
+        <button id="Anywhere_button_iframe" class="anywhere-book-now-button"
+                data-booking-url="https://ryszard6qru.setmore.com" data-new-tab="false">
+          <i class="fas fa-calendar-check"></i> Przejdź do formularza rezerwacji
+        </button>
+      </div>
     </div>
   </main>
 
-  <!-- STOPKA KONTAKTOWA -->
+  <!-- ELEGANCKA STOPKA KONTAKTOWA -->
   <footer class="contact-footer">
     <div class="contact-container">
       <h2 class="contact-title">Skontaktuj się ze mną</h2>
+
       <div class="contact-grid">
         <div class="contact-card">
-          <h3><i class="fas fa-map-marker-alt contact-icon"></i> Adres</h3>
-          <div class="contact-info">
-            <strong>PerłaDetailing</strong><br>
-            Gdańsk
-          </div>
-        </div>
-        <div class="contact-card">
-          <h3><i class="fas fa-clock contact-icon"></i> Godziny otwarcia</h3>
-          <div class="contact-info">
-            <strong>Poniedziałek - Piątek</strong><br>8:00 - 18:00<br><br>
-            <strong>Sobota - Niedziela</strong><br>9:00 - 14:00
-          </div>
-        </div>
-        <div class="contact-card">
-          <h3><i class="fas fa-phone contact-icon"></i> Kontakt</h3>
-          <div class="contact-info">
-            <strong>Telefon</strong><br>+48 505 908 101<br><br>
-            <strong>Email</strong><br>u7192673089@gmail.com<br><br>
-            <strong>WhatsApp</strong><br>+48 505 908 101
-          </div>
-        </div>
-      </div>
-      <div class="copyright">© 2025 PerłaDetailing. Wszelkie prawa zastrzeżone.</div>
-    </div>
-  </footer>
-</body>
-</html>
+          <h3><i class="fas fa-map-marker-alt
+              
